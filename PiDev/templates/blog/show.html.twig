@@ -1,0 +1,81 @@
+{% extends 'base.html.twig' %}
+
+{%  block content %}
+    <div class="section1">
+        <video id="background-video" autoplay loop muted>
+            <source src="{{ asset('images/tunisia.mp4') }}" type="video/mp4">
+        </video>
+    </div>
+
+    <section class="ftco-section bg-light">
+
+        <div class="container">
+
+            <div class="row d-flex">
+
+
+                {% for b in blog %}
+                    <div class="col-md-3 d-flex ">
+
+                        <div class="blog-entry align-self-stretch">
+                            {% for image in b.images %}
+
+
+                            <a href="" class="block-20" style="background-image: url({{  asset ('/uploads/' ~ image.name ) }});">
+                            </a>
+                            {% endfor %}
+                            <div class="text p-4 d-block">
+
+                                <span class="tag">Tips, Travel</span>
+                                <h3 class="heading mt-3"><a href="{{ path('app_blog_showBlog', {'id': b.id}) }}">{{ b.title }}</a></h3>
+                                <div class="meta mb-3">
+                                    <div><a href="#">{{ b.date|date('Y-m-d')  }}</a></div>
+                                    <div><a href="#">Visiteur</a></div>
+                                    <div><a href="#" class="meta-chat"><span class="icon-chat"></span> 3</a></div>
+                                </div>
+                                <form action="{{ path('app_blog_edit',{'id': b.id}) }}">
+                                    <button class="btn py-1 px-2 btn-primary" >MODIF BLOG</button>
+                                </form>
+
+                                <h1></h1>
+                                <form method="post" action="{{ path('app_blog_delete', {'id': b.id}) }}" onsubmit="return confirm('Are you sure you want to delete this item?');">
+                                    <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ b.id) }}">
+                                    <button class="btn py-1 px-2 btn-primary">Delete BLOG</button>
+                                </form>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                {% endfor %}
+                <form action="{{ path('app_blog_new') }}">
+                    <button class="btn py-2 px-2 btn-primary" >ADD BLOG</button>
+                </form>
+            </div>
+
+
+            <div class="row mt-5">
+                <div class="col text-center">
+                    <div class="block-27">
+                        <ul>
+                            <li><a href="#">&lt;</a></li>
+                            <li class="active"><span>1</span></li>
+                            {#     <li><a href="#">2</a></li>
+                            <li><a href="#">3</a></li>
+                            <li><a href="#">4</a></li>
+                            <li><a href="#">5</a></li> #}
+                            <li><a href="#">&gt;</a></li>
+                        </ul>
+                        <a href="{{ path('app_blog_index') }}">back to blogs</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+{% endblock  %}

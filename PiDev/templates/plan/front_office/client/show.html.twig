@@ -1,0 +1,528 @@
+{% extends 'basebaha.html.twig' %}
+
+{% block header %}
+    <head>
+        <title>DirEngine - Free Bootstrap 4 Template by Colorlib</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Alex+Brush" rel="stylesheet">
+
+        <link rel="stylesheet" href={{  asset("front/css/open-iconic-bootstrap.min.css") }}>
+        <link rel="stylesheet" href={{  asset("front/css/animate.css") }}>
+
+        <link rel="stylesheet" href={{  asset("front/css/owl.carousel.min.css") }}>
+        <link rel="stylesheet" href={{  asset("front/css/owl.theme.default.min.css") }}>
+        <link rel="stylesheet" href={{  asset("front/css/magnific-popup.css") }}>
+
+        <link rel="stylesheet" href={{  asset("front/css/aos.css") }}>
+
+        <link rel="stylesheet" href={{  asset("front/css/ionicons.min.css") }}>
+
+        <link rel="stylesheet" href={{  asset("front/css/bootstrap-datepicker.css") }}>
+        <link rel="stylesheet" href={{  asset("front/css/jquery.timepicker.css") }}>
+
+
+        <link rel="stylesheet" href={{  asset("front/css/flaticon.css") }}>
+        <link rel="stylesheet" href={{  asset("front/css/icomoon.css") }}>
+        <link rel="stylesheet" href={{  asset("front/css/style.css") }}>
+    </head>
+{% endblock %}
+
+{% block body %}
+    {{ include('navbar_front_office.html.twig') }}
+    <div class="hero-wrap js-fullheight"
+         style="background-image: url(
+         {% if (planImages is not empty) %}
+            {{ asset("uploads/")}}{{ planImages[0].path }}
+         {% else %}
+             {{  asset("front/images/image_5.jpg") }}
+         {%endif%}
+                 );">
+        <div class="overlay"></div>
+        <div class="container">
+            <div class="row no-gutters slider-text js-fullheight align-items-center justify-content-center" data-scrollax-parent="true">
+                <div class="col-md-9 ftco-animate text-center" data-scrollax=" properties: { translateY: '70%' }">
+                    <p class="breadcrumbs" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }"><span class="mr-2"><a href="#">Home</a></span> <span class="mr-2"><a href={{  path("app_plan_index")  }}>Plans</a></span> <span></span></p>
+                    <h1 class="mb-3 bread" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">{{plan.titre}}</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <section class="ftco-section ftco-degree-bg">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8 ftco-animate">
+                    <h2 class="mb-3">en savoir plus sur {{plan.titre}}</h2>
+                    <p>{{plan.description}}</p>
+                    <table class="table">
+                        <tbody>
+                        <tr>
+                            <th>Nombre de places max</th>
+                            <td>{{ plan.nmbrplacesmax }}</td>
+                        </tr>
+                        <tr>
+                            <th>Nombre de places reste</th>
+                            <td>{{ plan.nmbrplacesreste }}</td>
+                        </tr>
+                        <tr>
+                            <th>Date debut</th>
+                            <td>{{ plan.datedebut ? plan.datedebut|date('Y-m-d') : '' }}</td>
+                        </tr>
+                        <tr>
+                            <th>Date fin</th>
+                            <td>{{ plan.datefin ? plan.datefin|date('Y-m-d') : '' }}</td>
+                        </tr>
+                        <tr>
+                            <th>Note</th>
+                            <td>{{ plan.note }}/10</td>
+                        </tr>
+                        <tr>
+                            <th>Prix</th>
+                            <td><h5 class="mb-2 mt-4">{{plan.prix}} DT</h5></td>
+                        </tr>
+                        </tbody>
+                    </table>
+
+                    {% set skipFirstImg= 1 %}
+                    {% for plan_image in planImages %}
+                    <p>
+                        {% if skipFirstImg == 0 %}
+                            <img src={{ asset("uploads/")}}{{ plan_image.path }} alt="" style="max-width: 100%;height: auto;">
+                        {%endif%}
+                        {% set skipFirstImg = 0%}
+                    </p>
+                    {% endfor %}
+
+                    <div class="about-author d-flex p-5 bg-light">
+                        <div class="bio align-self-md-center mr-5">
+                            <img src={{asset("front/images/person_1.jpg")}} alt="Image placeholder" class="img-fluid mb-4" style="max-width: 20%;height: auto;">
+                        </div>
+                        <div class="desc align-self-md-center">
+                            <h3>GUIDE</h3>
+                            <p> {{ plan.idguide.nom }} {{ plan.idguide.prenom }}</p>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="col-md-4 sidebar ftco-animate">
+                    <div class="sidebar-box ftco-animate">
+                        <div class="categories">
+                            <h3>lieux à visiter lors de ce voyage</h3>
+                            {% for plan_place in planPlaces %}
+                            <li><a href="#">{{ plan_place.idplace.nom }}</a></<li>
+                                {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- loader -->
+    <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"/></svg></div>
+
+
+    <script src={{  asset("front/js/jquery.min.js") }}></script>
+    <script src={{  asset("front/js/jquery-migrate-3.0.1.min.js") }}></script>
+    <script src={{  asset("front/js/popper.min.js") }}></script>
+    <script src={{  asset("front/js/bootstrap.min.js") }}></script>
+    <script src={{  asset("front/js/jquery.easing.1.3.js") }}></script>
+    <script src={{  asset("front/js/jquery.waypoints.min.js") }}></script>
+    <script src={{  asset("front/js/jquery.stellar.min.js") }}></script>
+    <script src={{  asset("front/js/owl.carousel.min.js") }}></script>
+    <script src={{  asset("front/js/jquery.magnific-popup.min.js") }}></script>
+    <script src={{  asset("front/js/aos.js") }}></script>
+    <script src={{  asset("front/js/jquery.animateNumber.min.js") }}></script>
+    <script src={{  asset("front/js/bootstrap-datepicker.js") }}></script>
+    <script src={{  asset("front/js/jquery.timepicker.min.js") }}></script>
+    <script src={{  asset("front/js/scrollax.min.js") }}></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
+    <script src={{  asset("front/js/google-map.js") }}></script>
+    <script src={{  asset("front/js/main.js") }}></script>
+
+
+    <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
+
+    <link rel="stylesheet" href="../../css/css/styles.css">
+    <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
+    <script src="https://use.fontawesome.com/your-embed-code.js"></script> <!-- TODO: Place your Font Awesome embed code  -->
+
+
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+
+
+
+
+    <div class="container">
+
+        <div class="be-comment-block">
+            <button onclick="ff()"></button>
+
+            <h1 class="comments-title"> </h1>
+
+            {% for commentaire in commentaires %}
+            {% if commentaire.plan.id==plan.id %}
+
+
+            {% if commentaire.parent==null %}
+
+
+
+
+            <h2>Commentaire {{ loop.index }}</h2>
+
+
+
+            <div class="be-comment">
+                <div class="be-img-comment">
+                    <a href="blog-detail-2.html">
+                        <img src="https://bootdey.com/img/Content/avatar/avatar1.png" alt="" class="be-ava-comment">
+                    </a>
+                </div>
+
+
+                <span class="be-comment-name">
+                    <div type="hidden">
+
+                    </div>
+					 {{ commentaire.idclient.prenom }} 	 {{ commentaire.idclient.nom }}
+
+					</span>
+                <span class="be-comment-time">
+					<i class="fa fa-clock-o"></i>
+					{{ commentaire.datePost|date('d-m-Y h:m:s') }}
+				</span>
+                <p class="be-comment-text">{{commentaire.contenu }} </p>
+
+                {#  si id clé etrangere mtaa client heya nafsha mtaa id eli amalt bih login#}
+
+                {% if app.user.id == commentaire.idclient.id  %}
+                    <a href="{{ path('app_commentaire_edit', {'idcomm': commentaire.idcomm}) }}">edit</a>
+
+                {% endif %}
+
+                {#
+                {{ app.user.id }}
+                 {{ commentaire.idclient.id}} #}
+                <p><a href="#ajout-commentaire" data-reply data-id="{{ commentaire.idComm }}" class=" btn btn-primary press  ">Reply</a></p>
+                <div id="parent">
+
+
+
+                    <a href="{{ path('commentaire_like',{'comm':commentaire.idComm}) }}"  onclick="showData(Math.round(Math.random() * 10),event);ff();" class="btn btn-link js-like">
+
+                        {% if app.user and commentaire.isLikedByUser(app.user) %}
+
+                            <i class="fa fa-thumbs-up"> </i>
+
+
+                        {% else %}
+                            <i class="fa fa-thumbs-o-up"> </i>
+
+                        {% endif %}
+                        <span class="js-likes">{{ commentaire.likes|length }}</span>
+                        <span class="js-label">J'aime</span>
+
+
+                    </a>
+
+
+
+                    {# //////////////partie dislike///////// #}
+                    <a href="{{ path('commentaire_dislike',{'comm':commentaire.idComm}) }}"  onclick="showDatadislikes(Math.round(Math.random() * 10),event)" class="btn btn-link js-dislike">
+
+                        {% if app.user and commentaire.isDislikedByUser(app.user) %}
+
+                            <i class="fa fa-thumbs-down"> </i>
+
+
+                        {% else %}
+                            <i class="fa fa-thumbs-o-down"> </i>
+
+                        {% endif %}
+                        <span class="js-dislikes">{{ commentaire.dislikes|length }}</span>
+                        <span class="js-label">J'aime pas</span>
+
+
+                    </a>
+
+                    {# //////////////////////// #}
+                    {% endif %}
+                    {# on affiche les reponses #}
+                    {% for reply in commentaire.replies %}
+                    <div class="be-comment">
+                        <div class="be-img-comment">
+                            <a href="blog-detail-2.html">
+                                <img src="https://bootdey.com/img/Content/avatar/avatar1.png" alt="" class="be-ava-comment">
+                            </a>
+                        </div>
+                        <div class="be-comment-content">
+
+				<span class="be-comment-name">
+                    <div type="hidden">
+
+
+                    </div>
+
+					 {{ reply.idclient.prenom }} 	 {{ reply.idclient.nom }}
+
+					</span>
+                            <span class="be-comment-time">
+					<i class="fa fa-clock-o"></i>
+					{{ reply.datePost|date('d-m-Y h:m:s') }}
+				</span>
+                            <p class="be-comment-text">{{reply.contenu }} </p>
+
+
+                            {#  si id clé etrangere mtaa client heya nafsha mtaa id eli amalt bih login#}
+
+                            {% if app.user.id == reply.idclient.id  %}
+
+                                <a href="{{ path('app_commentaire_edit', {'idcomm': reply.idcomm}) }}">edit</a>
+                            {% endif %}
+
+                            {#
+                            {{ app.user.id }}
+                             {{ commentaire.idclient.id}} #}
+                            <div>
+
+                                <p><a href="#ajout-commentaire" data-reply data-id="{{ commentaire.idComm }}" class=" btn btn-primary press  ">Reply</a></p>
+
+
+
+
+
+                                {% endfor %}
+
+
+                            </div>
+
+
+
+
+
+
+                        </div>
+
+                        <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+                        {% endif %}
+
+                        {% endfor %}
+
+                        <form class="form-block">
+                            <div class="row">
+
+                                <div class="col-xs-12 col-sm-6 fl_icon">
+                                    <div class="form-group fl_icon">
+
+                                    </div>
+                                </div>
+
+
+                            </div>
+
+                        </form>
+
+
+
+
+
+                        <h1  class="comments-title">Ajouter un commentaire</h1>
+
+                        <div class="be-comment">
+                            <div class="be-img-comment">
+                                <a href="blog-detail-2.html">
+                                    <img src="https://bootdey.com/img/Content/avatar/avatar1.png" alt="" class="be-ava-comment">
+                                </a>
+                            </div>
+                            <div  id="ajout-commentaire" class="be-comment-content">
+
+				<span class="be-comment-name">
+
+					</span>
+                                <span class="be-comment-time">
+					<i class="fa fa-clock-o"></i>
+					May 27, 2015 at 3:14am
+
+				</span>
+
+                                {{ form_start(form2) }}
+                                {#  {{ app.session.get('id') }}
+                    {{ app.session.get('prenom') }}#}
+
+                                {{ form_widget(form2.contenu,{'attr':{'class':'form-control' ,'placeholder':'Type your comment here'}}) }}
+
+
+
+
+
+
+
+                            </div>
+
+
+                        </div>
+
+
+                        <form class="form-block">
+                            <div class="row">
+
+                                <div class="col-xs-12 col-sm-6 fl_icon">
+
+
+                                    <button class="form-control btn btn-primary submit px-3">{{ button_label|default('add') }}</button>
+
+                                    {{ form_end(form2) }}
+
+                                </div>
+
+
+                            </div>
+
+
+                        </form>
+
+                        <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+                        <script>
+                            window.onload =()=>
+                            {
+                                //ecouteur d event sur tous les boutons reply
+                                document.querySelectorAll("[data-reply]").forEach(element=>
+                                {
+                                    element.addEventListener("click",function ()
+                                    {
+                                        // console.log(this);
+                                        document.querySelector( "#commentaire1_parentid").value=this.dataset.id;
+                                    });
+                                });
+                            }
+                        </script>
+
+                        <script>
+
+                            function onClickBtnLike(event)
+                            {
+                                event.preventDefault();
+                                const url=this.href;
+                                const spanCount=this.querySelector('span.js-likes');
+                                const icone=this.querySelector('i');
+
+                                axios.get(url).then(function (response)
+                                {
+
+
+                                    const likes=response.data.likes;
+                                    spanCount.textContent=likes;
+                                    if(icone.classList.contains('fa-thumbs-up')) icone.classList.replace('fa-thumbs-up','fa-thumbs-o-up')
+                                    else icone.classList.replace('fa-thumbs-o-up','fa-thumbs-up');
+                                    console.log(response );
+                                })
+                            }
+                            function showData(randomNumber,event)
+                            {
+                                event.preventDefault();
+
+
+                                document.querySelectorAll('a.js-like').forEach(function (link)
+                                {
+                                    link.addEventListener('click',onClickBtnLike);
+
+
+
+                                })
+                            }
+
+                            {# fonction dislike #}
+                            function showDatadislikes(randomNumber,event)
+                            {
+                                event.preventDefault();
+
+
+                                document.querySelectorAll('a.js-dislike').forEach(function (link)
+                                {
+                                    link.addEventListener('click',onClickBtnDislike);
+
+
+
+                                })
+                            }
+
+                            {# fction click btn dislike #}
+                            function onClickBtnDislike(event)
+                            {
+                                event.preventDefault();
+                                const url=this.href;
+                                const spanCount=this.querySelector('span.js-dislikes');
+                                const icone=this.querySelector('i');
+
+                                axios.get(url).then(function (response)
+                                {
+
+
+                                    const dislikes=response.data.dislikes;
+                                    spanCount.textContent=dislikes;
+                                    if(icone.classList.contains('fa-thumbs-down')) icone.classList.replace('fa-thumbs-down','fa-thumbs-o-down')
+                                    else icone.classList.replace('fa-thumbs-o-down','fa-thumbs-down');
+                                    console.log(response );
+                                })
+                            }
+
+                        </script>
+                        <script src="http://cdnjs.cloudflare.com/ajax/libs/mustache.js/0.8.1/mustache.js"></script>
+
+                        <script type="text/javascript" src="https//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js">
+                            <script type="text/javascript" src="../../public/js/mustache.js">
+
+
+                        </script>
+                        <script type="text/javascript">
+
+                            function ff()
+                            {
+                                (function ($)
+                                {
+                                    $.fn.notif=function (options)
+                                    {
+                                        var options= $.extend(
+                                            {
+                                                html: '<div class="notification" style="background-color: beige; z-index:2000; box-shadow:0px 4px 30px rgba(0,0,0,0.5); ">\
+       <div class="right">\
+       <h2>jaime ajouté par: {{ commentaire.idclient.nom   }} {{ commentaire.idclient.prenom }} sur un commentaire </h2> \
+       <p></p>\
+       </div>\
+       </div> '
+                                            },options)
+
+                                        return this.each(function ()
+                                        {
+                                            var $this= $(this);
+                                            var $notifs=$('> .notifications',this);
+                                            var $notif=$(Mustache.render(options.html,options));
+                                            if($notifs.length ==0)
+                                            {
+                                                $notifs= $ ('<div class="notifications "/>');
+                                                $this.append($notifs);
+                                            }
+                                            $notifs.append($notif);
+                                            $notif.click(function (event)
+                                            {
+                                                event.preventDefault();
+                                                $notif.slideUp();
+                                            })
+                                        })
+                                        console.log(options);
+                                    }
+
+                                    $('body').notif({title:'mon tite',content:'Mon contenu'})
+                                })(jQuery);
+                            }
+                        </script>
+{% endblock %}

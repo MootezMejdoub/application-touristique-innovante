@@ -1,0 +1,181 @@
+{% extends 'base.html.twig' %}
+
+
+{% block body %}
+
+{#    <div class="container" xmlns="http://www.w3.org/1999/html">#}
+    <div class="container">
+      <h1>Reservation</h1>
+
+    <table class="table" border="0.5" >
+        <tr>
+             <th hidden>Numreservation</th>
+            <th> Client</th>
+            <th>Plan</th>
+            <th>Nombre de place</th>
+            <th>Date de debut</th>
+            <th>Date de fin</th>
+            <th>Durée de reservation </th>
+            <th> Prix </th>
+            <th colspan="2" >Actions</th>
+        </tr>
+        <tbody>
+        {%  for res in reservation %}
+            <tr>
+
+                <td data-target="client"> {{ res.idclient.nom }}~{{ res.idclient.getPrenom()}}</td>
+                <td data-target="plan">{{ res.plan.getTitre()}}</td>
+                <td data-target="place">{{ res.nbrPlace }}</td>
+
+                <td>{{ res.dateDebut ? res.datedebut|date('d/m/Y') : '' }}</td>
+                <td>{{ res.dateFin ? res.datefin|date('d/m/Y') : '' }}</td>
+
+                <td> {% set difference=date(res.datefin).diff(date(res.datedebut)) %}
+                    {% set leftDays=difference.days %}
+                    {% if leftDays==1 %}
+                        1 jour
+                    {% else  %}
+                        {{ leftDays}} jours
+                    {% endif %} </td>
+
+
+                <td>     {{ res.plan.getPrix()}}                         </td>
+{#              #}
+                <td><a  href=" {{ path('reservation_edit',  {'numreservation': res.numreservation}) }}" type="button" class="btn btn-info"> Update</a> </td> {# class="btn btn-info " data-toggle="modal" data-target="#myModel" >Update</a></td>#}
+
+                {#<td><button type="button" class="btn btn-info " data-toggle="modal" data-target="#myModal" {{ res.numReservation }}>Update</button>   </td>#}
+
+                <td>  {{ include('reservation/_delete_form.html.twig') }}</td>>
+
+               <td> <a href="{{ path('app_facture_index' , { 'numreservation':res.numreservation})}} "> download facture pdf</a> </td>
+
+            </tr>
+
+        {% else %}
+            <tr>
+                <td colspan="5">no reservation found</td>
+            </tr>
+
+       {#  #}
+        {% endfor %}
+
+        </tbody>
+    </table>
+      <br>
+     <p>    <a href="{{ path('reservation_new') }}" type="button" class="btn btn-outline-dark" > new Reservation </a> </p>
+      {# <button class="btn btn-outline-dark" href="{{ path('reservation_new') }}" type="button">new Reservation</button>#}
+
+
+  </div> <!--------container div----------------->
+    <!-- Trigger the modal with a button -->
+   {#  <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Open Modal</button>
+   #}
+
+
+    <!-- Modal -->
+    <div id="myModal" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                  {#   <button type="button" class="close" data-dismiss="modal">&times;</button>#}
+                    <h4 class="modal-title" align="center">Update Reservation</h4>
+                </div>
+                <div class="modal-body">
+
+                        <div class="container">
+
+{#                            <td>{{ include('reservation/edit.html.twig') }}</td>#}
+                                <div class="form-group" >
+                        {{ form_start(form) }}
+                                    {{ include('reservation/editUser.html.twig') }}
+                        {{ form_end(form) }}
+                                </div>
+                        </div>
+
+                </div>
+                <div class="modal-footer">
+
+                 {#    <a href="{{ path('reservation_edit',  {'numreservation': res.numreservation})}}" id="save" class="btn btn-primary pull-right edit">Update</a>
+                 #}
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-info" >Update</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    {#  </div>
+    </div>#}
+
+
+
+{#  #}
+
+  {#   <a href="{{ path('reservation_new') }}" style=" background-color: #002b45"> new Reservation</a> #}
+
+  {#   <a href="{{ path('app_facture_index') }}"> download pdf</a>  #}
+
+
+
+{% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

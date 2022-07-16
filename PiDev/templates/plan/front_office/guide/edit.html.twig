@@ -1,0 +1,102 @@
+{% extends 'basebaha.html.twig' %}
+
+{% block header %}
+    <head>
+        <title>DirEngine - Free Bootstrap 4 Template by Colorlib</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Alex+Brush" rel="stylesheet">
+
+        <link rel="stylesheet" href={{  asset("front/css/open-iconic-bootstrap.min.css") }}>
+        <link rel="stylesheet" href={{  asset("front/css/animate.css") }}>
+
+        <link rel="stylesheet" href={{  asset("front/css/owl.carousel.min.css") }}>
+        <link rel="stylesheet" href={{  asset("front/css/owl.theme.default.min.css") }}>
+        <link rel="stylesheet" href={{  asset("front/css/magnific-popup.css") }}>
+
+        <link rel="stylesheet" href={{  asset("front/css/aos.css") }}>
+
+        <link rel="stylesheet" href={{  asset("front/css/ionicons.min.css") }}>
+
+        <link rel="stylesheet" href={{  asset("front/css/bootstrap-datepicker.css") }}>
+        <link rel="stylesheet" href={{  asset("front/css/jquery.timepicker.css") }}>
+
+
+        <link rel="stylesheet" href={{  asset("front/css/flaticon.css") }}>
+        <link rel="stylesheet" href={{  asset("front/css/icomoon.css") }}>
+        <link rel="stylesheet" href={{  asset("front/css/style.css") }}>
+        <link rel="stylesheet" href="{{ asset('bundles/mercuryseriesflashy/css/flashy.css') }}">
+    </head>
+{% endblock %}
+
+{% block body %}
+    {{ include('navbar_front_office.html.twig') }}
+<div class="hero-wrap js-fullheight"
+     style="background-image: url(
+     {% if (planImages is not empty) %}
+         {{ asset("uploads/")}}{{ planImages[0].path }}
+     {% else %}
+         {{  asset("front/images/image_5.jpg") }}
+     {%endif%}
+             );">
+
+
+
+    <div class="overlay"></div>
+    <div class="container">
+
+        <div class="row no-gutters slider-text js-fullheight align-items-center justify-content-center" data-scrollax-parent="true">
+            <div class="col-md-9 ftco-animate text-center" data-scrollax=" properties: { translateY: '70%' }">
+                <p class="breadcrumbs" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }"><span class="mr-2"><a href="#">Home</a></span> <span class="mr-2">             {% if (planImages is not empty) %}
+                            {% set plan_image = planImages[0] %}
+                            {{ include('plan_image/_delete_form.html.twig') }}
+                            Supprimer cette Image
+                        {%endif%}</span> <span></span></p>
+                <h1 class="mb-3 bread" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">{{plan.titre}}</h1>
+            </div>
+        </div>
+    </div>
+</div>
+
+    <section class="ftco-section ftco-degree-bg">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8 ftco-animate">
+                    <h1>Edit Plan</h1>
+
+                    {{ include('plan/front_office/guide/_form.html.twig', {'button_label': 'Modifier'}) }}
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- loader -->
+    <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"/></svg></div>
+
+
+    <script src={{  asset("front/js/jquery.min.js") }}></script>
+    <script src={{  asset("front/js/jquery-migrate-3.0.1.min.js") }}></script>
+    <script src={{  asset("front/js/popper.min.js") }}></script>
+    <script src={{  asset("front/js/bootstrap.min.js") }}></script>
+    <script src={{  asset("front/js/jquery.easing.1.3.js") }}></script>
+    <script src={{  asset("front/js/jquery.waypoints.min.js") }}></script>
+    <script src={{  asset("front/js/jquery.stellar.min.js") }}></script>
+    <script src={{  asset("front/js/owl.carousel.min.js") }}></script>
+    <script src={{  asset("front/js/jquery.magnific-popup.min.js") }}></script>
+    <script src={{  asset("front/js/aos.js") }}></script>
+    <script src={{  asset("front/js/jquery.animateNumber.min.js") }}></script>
+    <script src={{  asset("front/js/bootstrap-datepicker.js") }}></script>
+    <script src={{  asset("front/js/jquery.timepicker.min.js") }}></script>
+    <script src={{  asset("front/js/scrollax.min.js") }}></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
+    <script src={{  asset("front/js/google-map.js") }}></script>
+    <script src={{  asset("front/js/main.js") }}></script>
+
+    <!-- Flashy depends on jQuery -->
+    <script src="//code.jquery.com/jquery.js"></script>
+    <!-- Load Flashy default JavaScript -->
+    <script src="{{ asset('bundles/mercuryseriesflashy/js/flashy.js') }}"></script>
+    <!-- Include Flashy default partial -->
+    {{ include('@MercurySeriesFlashy/flashy.html.twig') }}
+{% endblock %}

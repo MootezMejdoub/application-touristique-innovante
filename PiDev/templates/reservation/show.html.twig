@@ -1,0 +1,57 @@
+{% extends 'admin.html.twig' %}
+
+
+
+{% block body %}
+    <h1>Reservation</h1>
+  {#   <div class="card-body">
+
+        <p class="card-description"> Add class <code>.table-dark</code>
+        </p>
+        <div class="table-responsive">
+
+        </div>
+    </div>
+  #}
+
+    <table class="table" border="0.5" >
+            <tr>
+                <th>Numreservation</th>
+                <th> Client</th>
+                <th>Plan</th>
+                <th>Nbrplace</th>
+                <th>Datedebut</th>
+                <th>Datefin</th>
+                <th colspan="2" >Actions</th>
+            </tr>
+        <tbody>
+        {%  for res in reservation %}
+            <tr>
+                <td>{{ res.numReservation }}</td>
+                <td> {{ res.idclient }}</td>
+                <td>{{ res.plan }}</td>
+                <td>{{ res.nbrPlace }}</td>
+                <td>{{ res.dateDebut ? res.datedebut|date('Y-m-d') : '' }}</td>
+                <td>{{ res.dateFin ? res.datefin|date('Y-m-d') : '' }}</td>
+                <td><a href="{{ path('reservation_edit',  {'numreservation': res.numreservation} ) }}">edit</a></td>
+                <td>{{ include('reservation/_delete_form.html.twig') }}</td>
+            </tr>
+
+        {% else %}
+            <tr>
+                <td colspan="5">no records found</td>
+            </tr>
+
+
+        {% endfor %}
+        </tbody>
+    </table>
+        </br>
+        <a href="{{ path('reservation_show') }}">refresh</a>
+
+
+
+
+ {#     {{ include('reservation/_delete_form.html.twig') }}   #}
+
+{% endblock %}

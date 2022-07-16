@@ -1,0 +1,56 @@
+
+
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+
+
+
+
+<link rel="stylesheet" href="../../../css/styles.css">
+
+
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+<div class="container">
+
+    <div class="be-comment-block">
+        <h1 class="comments-title">Comments (3)</h1>
+        {% for commentaire in commentaires %}
+        <div class="be-comment">
+            <div class="be-img-comment">
+                <a href="blog-detail-2.html">
+                    <img src="https://bootdey.com/img/Content/avatar/avatar1.png" alt="" class="be-ava-comment">
+                </a>
+            </div>
+            <div class="be-comment-content">
+
+				<span class="be-comment-name">
+					{{ commentaire.idclient.nom}} {{ commentaire.idclient.prenom }}
+					</span>
+                <span class="be-comment-time">
+					<i class="fa fa-clock-o"></i>
+					{{ commentaire.datePost|date('d-m-Y h:m:s') }}
+				</span>
+                <p class="be-comment-text">{{commentaire.contenu }} </p>
+
+
+            </div>
+        </div>
+        {% endfor %}
+
+        <form class="form-block">
+            <div class="row">
+
+                <div class="col-xs-12 col-sm-6 fl_icon">
+                    <div class="form-group fl_icon">
+
+                        <a class="btn btn-primary pull-right" href="{{ path('app_commentaire_new') }}">ajouter un commentaire</a>
+                    </div>
+                </div>
+
+
+            </div>
+
+        </form>
+
+    </div>
+
+</div>

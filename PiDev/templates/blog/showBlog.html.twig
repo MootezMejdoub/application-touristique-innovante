@@ -1,0 +1,173 @@
+
+
+
+{% extends 'base.html.twig' %}
+
+
+{%  block content %}
+
+
+
+    <div class="section1">
+        <video id="background-video" autoplay loop muted>
+            <source src="{{ asset('images/tunisia.mp4') }}" type="video/mp4">
+        </video>
+    </div>
+
+
+
+    <section class="ftco-section bg-light">
+
+        <div class="container">
+
+
+
+                <h1 class="heading mt-3"><a href="#">{{ blog.title }}</a></h1>
+                <span class="tag">Tips, Travel</span>
+            <br>
+
+                <div class="meta mb-3">
+                    <div><a href="#">{{ blog.date|date('Y-m-d')  }}</a></div>
+
+                    <div><a href="#" class="meta-chat"><span class="icon-chat"></span> 3</a></div>
+                    <h3 class="font-fantazy">{{ blog.description }}</h3>
+
+
+                    {# zzzzzzzzzzz rating #}
+                    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+
+
+                <div class="col text-center"  >
+
+                    <form style="display: inline" action="{{ path('app_blog_saveRate', {'id': blog.id,'rate':1}) }}">
+                        <button style="background-color: transparent;border-color: transparent">
+
+                    <i  class="fa fa-star fa-2x" data-index="0"></i>
+                            </button>
+
+                    </form>
+                    <form  style="display: inline"action="{{ path('app_blog_saveRate', {'id': blog.id,'rate':2}) }}">
+                        <button style="background-color: transparent;border-color: transparent">
+                    <i type="submit" class="fa fa-star fa-2x" data-index="1"></i>
+                        </button>
+                    </form>
+                    <form  style="display: inline"action="{{ path('app_blog_saveRate', {'id': blog.id,'rate':3}) }}">
+                        <button style="background-color: transparent;border-color: transparent">
+                            <i type="submit" class="fa fa-star fa-2x" data-index="2"></i>
+                        </button>
+                    </form>
+                    <form  style="display: inline"action="{{ path('app_blog_saveRate', {'id': blog.id,'rate':4}) }}">
+                        <button style="background-color: transparent;border-color: transparent">
+                    <i class="fa fa-star fa-2x" data-index="3"></i>
+                        </button>
+                    </form>
+                    <form  style="display: inline"action="{{ path('app_blog_saveRate', {'id': blog.id,'rate':5}) }}">
+                        <button style="background-color: transparent;border-color: transparent">
+                    <i class="fa fa-star fa-2x" data-index="4"></i>
+                        </button>
+                    </form>
+
+                    <h1>{{ ratingValue|round(1, 'floor') }}</h1>
+                </div>
+
+                    <script src="http://code.jquery.com/jquery-3.4.0.min.js" integrity="sha256-BJeo0qm959uMBGb65z40ejJYGSgR7REI4+CW1fNKwOg=" crossorigin="anonymous"></script>
+                    <script>
+                        var ratedIndex = -1, uID = 0;
+
+                        $(document).ready(function () {
+                            resetStarColors();
+
+                            if (localStorage.getItem('ratedIndex') != null) {
+                                setStars(parseInt(localStorage.getItem('ratedIndex')));
+                                uID = localStorage.getItem('uID');
+                            }
+
+                            $('.fa-star').on('click', function () {
+                                ratedIndex = parseInt($(this).data('index'));
+
+
+
+
+
+                                localStorage.setItem('ratedIndex', ratedIndex);
+                                saveToTheDB();
+                            });
+
+                            $('.fa-star').mouseover(function () {
+                                resetStarColors();
+                                var currentIndex = parseInt($(this).data('index'));
+                                setStars(currentIndex);
+                            });
+
+                            $('.fa-star').mouseleave(function () {
+                                resetStarColors();
+
+                                if (ratedIndex != -1)
+                                    setStars(ratedIndex);
+                            });
+                        });
+
+                        function saveToTheDB() {
+                            $.ajax({
+                                url: "index.php",
+                                method: "POST",
+                                dataType: 'json',
+                                data: {
+                                    save: 1,
+                                    uID: uID,
+                                    ratedIndex: ratedIndex
+
+                                }, success: function (r) {
+                                    uID = r.id;
+                                    localStorage.setItem('uID', uID);
+                                }
+                            });
+                        }
+
+                        function setStars(max) {
+                            for (var i=0; i <= max; i++)
+                                $('.fa-star:eq('+i+')').css('color', '#F4D03F');
+                        }
+
+                        function resetStarColors() {
+                            $('.fa-star').css('color', '#99A3A4');
+                        }
+                    </script>
+
+                    {# wfé l  rating #}
+
+
+
+                </div>
+
+            <td>{% for image in blog.images %}
+                <img  src="{{ asset ('/uploads/' ~ image.name ) }}" alt="image"
+                     width="150" class="centerr">
+                {% endfor %}
+
+                            </div>
+                        </div>
+                    </div>
+            </div>
+            <div class="row mt-5">
+                <div class="col text-center">
+                    <div class="block-27">
+                        <ul>
+                            <li><a href="#">&lt;</a></li>
+                            <li class="active"><span>1</span></li>
+                            {#     <li><a href="#">2</a></li>
+                            <li><a href="#">3</a></li>
+                            <li><a href="#">4</a></li>
+                            <li><a href="#">5</a></li> #}
+                            <li><a href="#">&gt;</a></li>
+                        </ul>
+                        <a href="{{ path('app_blog_index') }}">back to blogs</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+{% endblock  %}

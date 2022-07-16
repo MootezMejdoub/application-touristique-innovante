@@ -1,0 +1,45 @@
+{% extends 'frontt.html.twig' %}
+
+
+{% block body %}
+    <h4 style="text-align: center !important;"> Profil List:</h4><br><br>
+
+    {% set sco  =0 %}
+
+    {% for user in users %}
+        {% for int in interst %}
+            {% if user.idInterest == int.idIntrest %}
+                {% set sco = int.score %}
+
+            {% endif %}
+            {% endfor %}
+
+        {% if ((interstconn.score-30) < sco)  and (sco < (interstconn.score+30) )  %}
+    <div class="col-sm col-md-6 col-lg ftco-animate">
+        <div class="destination">
+            <a href="#" class="img img-2 d-flex justify-content-center align-items-center" style="background-image: url({{ asset('front/images/hotel-1.jpg') }});">
+                <div class="icon d-flex justify-content-center align-items-center">
+                    <span class="icon-search2"></span>
+                </div>
+            </a>
+            <div class="text p-3">
+                <div class="d-flex">
+                    <div class="one">
+
+                        <h3><a href="#">{{ user.nom }}, {{ user.prenom }}</a></h3>
+                    </div>
+                </div>
+                <hr>
+                <p class="bottom-area d-flex">
+                    <span class="ml-auto"><a href="{{ path('addmatching', {'id': user.id}) }}">Like</a></span>
+                </p>
+            </div>
+        </div>
+    </div>
+            {% set sco  =0 %}
+
+        {% endif %}
+    {% endfor %}
+
+
+{% endblock %}

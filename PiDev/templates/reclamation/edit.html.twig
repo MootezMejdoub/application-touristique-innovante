@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+
+{% block content %}
+    <div class="section1">
+
+
+
+        <video id="background-video" autoplay loop muted>
+            <source src="{{ asset('images/tunisia.mp4') }}" type="video/mp4">
+        </video>
+
+    </div>
+
+    <h1>Edit Reclamation</h1>
+
+    {{ include('reclamation/_form.html.twig', {'button_label': 'Update'}) }}
+{#     {{ include('reclamation/_delete_form.html.twig') }} #}
+    <a class="btn-link"  href="{{ path('app_reclamation_new') }}">back to list</a>
+
+
+{% endblock %}

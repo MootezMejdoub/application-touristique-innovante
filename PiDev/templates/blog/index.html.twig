@@ -1,0 +1,142 @@
+{% extends 'base.html.twig' %}
+
+{%  block content %}
+    <div class="section1">
+        <video id="background-video" autoplay loop muted>
+            <source src="{{ asset('images/tunisia.mp4') }}" type="video/mp4">
+        </video>
+    </div>
+
+    <section class="ftco-section bg-light">
+
+        <div class="container">
+
+            <div class="row d-flex">
+
+                {% for b in blogs %}
+                 <div class="col-md-3 d-flex ">
+
+                    <div class="blog-entry align-self-stretch">
+
+
+                        {% for image in b.images %}
+
+
+                            <a href="" class="block-20" style="background-image: url({{  asset ('/uploads/' ~ image.name ) }});">
+                            </a>
+                        {% endfor %}
+                        <div class="text p-4 d-block">
+
+                            <span class="tag">Tips, Travel</span>
+                            <h3 class="heading mt-3"><a href="{{  path('app_blog_showBlog', {'id': b.id}) }}">{{ b.title }}</a></h3>
+                            <div class="meta mb-3">
+                                <div><a href="#">{{ b.date|date('Y-m-d')  }}</a></div>
+                                <br>
+
+
+                                <div class="one">
+
+                                    <p class="rate">
+                                        <i class="icon-star"></i>
+                                        <i class="icon-star"></i>
+                                        <i class="icon-star"></i>
+                                        <i class="icon-star"></i>
+                                        <i class="icon-star-o"></i>
+                                        <span>Rating</span>
+                                    </p>
+                                </div>
+
+                               {#  {% for s  in rating  %}
+                                    {% if s.blogid.id==b.id %}
+                               #}
+                                          {#  {% if s.rateIndex==1 %}
+                                                <i style="color: #FFD700" class="fa fa-star fa-2x" ></i>
+                                                <i style="color: black" class="fa fa-star fa-2x" ></i>
+                                                <i style="color: black" class="fa fa-star fa-2x" ></i>
+                                                <i style="color: black" class="fa fa-star fa-2x" ></i>
+                                                <i style="color: black" class="fa fa-star fa-2x" ></i>
+                                            {% endif %}
+                                            {% if s.rateIndex== 2%}
+                                                <i style="color: #FFD700" class="fa fa-star fa-2x" ></i>
+                                                <i style="color: #FFD700" class="fa fa-star fa-2x" ></i>
+                                                <i style="color: black" class="fa fa-star fa-2x" ></i>
+                                                <i style="color: black" class="fa fa-star fa-2x" ></i>
+                                                <i style="color: black" class="fa fa-star fa-2x" ></i>
+                                            {% endif %}
+                                            {% if s.rateIndex== 3%}
+                                                <i style="color: #FFD700" class="fa fa-star fa-2x" ></i>
+                                                <i style="color: #FFD700" class="fa fa-star fa-2x" ></i>
+                                                <i style="color: #FFD700" class="fa fa-star fa-2x" ></i>
+                                                <i style="color: black" class="fa fa-star fa-2x" ></i>
+                                                <i style="color: black" class="fa fa-star fa-2x" ></i>
+                                            {% endif %}
+                                            {% if s.rateIndex== 4%}
+                                                <i style="color: #FFD700" class="fa fa-star fa-2x" ></i>
+                                                <i style="color: #FFD700" class="fa fa-star fa-2x" ></i>
+                                                <i style="color: #FFD700" class="fa fa-star fa-2x" ></i>
+                                                <i style="color: #FFD700" class="fa fa-star fa-2x" ></i>
+                                                <i style="color: black" class="fa fa-star fa-2x" ></i>
+                                            {% endif %}
+                                            {% if s.rateIndex== 5%}
+                                                <i style="color: #FFD700" class="fa fa-star fa-2x" ></i>
+                                                <i style="color: #FFD700" class="fa fa-star fa-2x" ></i>
+                                                <i style="color: #FFD700" class="fa fa-star fa-2x" ></i>
+                                                <i style="color: #FFD700" class="fa fa-star fa-2x" ></i>
+                                                <i style="color: #FFD700" class="fa fa-star fa-2x" ></i>
+                                            {% endif %}
+
+
+                                    {% else %}
+                                    <i style="color: black" class="fa fa-star fa-2x" ></i>
+                                    <i style="color: black" class="fa fa-star fa-2x" ></i>
+                                    <i style="color: black" class="fa fa-star fa-2x" ></i>
+                                    <i style="color: black" class="fa fa-star fa-2x" ></i>
+                                    <i style="color: black" class="fa fa-star fa-2x" ></i>
+                                    {% endif %}
+                                    {% endfor %}      #}
+
+                                <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+                                <meta charset="UTF-8">
+                                <meta name="viewport"
+                                      content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+                                <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+
+
+
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                {% endfor %}
+
+                <script src="http://code.jquery.com/jquery-3.4.0.min.js" integrity="sha256-BJeo0qm959uMBGb65z40ejJYGSgR7REI4+CW1fNKwOg=" crossorigin="anonymous"></script>
+
+            </div>
+            <div class="row mt-5">
+                <div class="col text-center">
+                    <div class="block-27">
+                        <ul>
+                            <li><a href="#">&lt;</a></li>
+                            <li class="active"><span>1</span></li>
+                        {#     <li><a href="#">2</a></li>
+                            <li><a href="#">3</a></li>
+                            <li><a href="#">4</a></li>
+                            <li><a href="#">5</a></li> #}
+                            <li><a href="#">&gt;</a></li>
+                        </ul>
+                        <form action="{{ path('app_blog_show') }}">
+                            <button class="btn-danger" >My BLOGs</button>
+                        </form>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+{% endblock  %}

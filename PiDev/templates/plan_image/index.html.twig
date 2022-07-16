@@ -1,0 +1,38 @@
+{% extends 'basebaha.html.twig' %}
+
+{% block title %}PlanImage index{% endblock %}
+
+{% block body %}
+    {{ include('my_side_bar_back_office.html.twig') }}
+    <h1>PlanImage index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Idplan</th>
+                <th>Path</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for plan_image in plan_images %}
+            <tr>
+                <td>{{ plan_image.id }}</td>
+                <td>{{ plan_image.idplan }}</td>
+                <td>{{ plan_image.path }}</td>
+                <td>
+                    <a href="{{ path('app_plan_image_show', {'id': plan_image.id}) }}">show</a>
+                    <a href="{{ path('app_plan_image_edit', {'id': plan_image.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="4">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_plan_image_new') }}">Create new</a>
+{% endblock %}

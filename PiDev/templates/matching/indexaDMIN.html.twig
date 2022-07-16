@@ -1,0 +1,34 @@
+{% extends 'back.html.twig' %}
+
+{% block title %}Interest index   {% endblock %}
+
+{% block body %}
+    <h1>Interest index</h1>
+    <span class="ml-auto"><a href="{{ path('pdf') }}">Pdf</a></span>
+
+    <table class="table">
+        <thead>
+            <tr>
+
+                <th>Client 1</th>
+                <th>Client 2</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for matching in matching %}
+            <tr>
+                <td>{{ matching.client1.nom }}</td>
+                <td>{{ matching.client2.nom }}</td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="7">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    {{ knp_pagination_render(matching) }}
+
+
+{% endblock %}

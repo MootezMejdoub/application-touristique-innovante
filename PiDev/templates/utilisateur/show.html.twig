@@ -1,0 +1,71 @@
+{% extends 'base1.html.twig' %}
+
+{% block title %}Utilisateur{% endblock %}
+
+{% block body %}
+<div class="row ">
+    <div class="col-12 grid-margin">
+        <div class="card">
+            <div class="card-body">
+    <h1>Utilisateur</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ app.user.id}}</td>
+            </tr>
+            <tr>
+                <th>Nom</th>
+                <td>{{ app.user.nom }}</td>
+            </tr>
+            <tr>
+                <th>Prenom</th>
+                <td>{{ app.user.prenom }}</td>
+            </tr>
+            <tr>
+                <th>DateNaissance</th>
+                <td>{{ app.user.dateNaissance ? utilisateur.dateNaissance|date('Y-m-d') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Adresse</th>
+                <td>{{ app.user.adresse }}</td>
+            </tr>
+            <tr>
+                <th>NumTel</th>
+                <td>{{ app.user.numTel }}</td>
+            </tr>
+            <tr>
+                <th>Email</th>
+                <td>{{ app.user.email }}</td>
+            </tr>
+
+
+            <tr>
+                <th>Description</th>
+                <td>{{ app.user.description }}</td>
+            </tr>
+            <tr>
+                <th>Evaluation</th>
+                <td>{{ app.user.evaluation }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+{#     <a href="{{ path('app_utilisateur_index') }}">back to list</a>
+#}
+    <a href="{{ path('app_utilisateur_edit', {'id': utilisateur.id}) }}">edit</a>
+    <a href="{{ path('app_commentaire_new', {'id': utilisateur.id}) }}">comment</a>
+
+
+
+    {{ include('utilisateur/_delete_form.html.twig') }}
+            </div>
+            <!-- partial -->
+        </div>
+        <!-- main-panel ends -->
+    </div>
+    <!-- page-body-wrapper ends -->
+</div>
+
+{% endblock %}

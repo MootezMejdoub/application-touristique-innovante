@@ -1,0 +1,170 @@
+{#  {% extends 'front.html.twig' %}
+
+{# {% block title %}Facture {% endblock %} #}
+
+{#  {% block body %}#}
+<br>
+
+    <div align="baseline" class="container">
+    <h1 align="center">Facture </h1>
+    </div>
+    {#  <table class="table" border-collapse="collapse">
+       #}{#  <thead>
+            <tr>
+                <th>Idfacture</th>
+                <th>PrixTotal</th>
+                <th>Date</th>
+                <th>actions</th>
+            </tr>
+        </thead>#}{#
+        <tbody>
+        {% for facture in factures %}
+            <tr>
+                <td hidden> {{ facture.idfacture }}</td>
+                <td> <strong>Client : </strong> {{ facture.idclient}} </td>
+
+                <td> <strong> Plan Reservé : </strong> {{ facture.Reservation}}</td>
+
+                <td><strong>   prix : </strong> {{ facture.prixTotal }}</td>
+                <td> <strong>date de reservation :</strong> {{ facture.date ? facture.date|date('d-m-Y') : '' }}</td>
+
+
+              #}{#  <td>
+                    <a href="{{ path('app_facture_show', {'idfacture': facture.idfacture}) }}">show</a>
+                    <a href="{{ path('app_facture_edit', {'idfacture': facture.idfacture}) }}">edit</a>
+                </td>#}{#
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="4">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>#}
+  {#   <a href="{{ path('app_facture_new') }}">Create new</a>#}
+
+            <div align="center" class="container" style="border:#7ae8aa outset  medium; width:90%; margin:3%">
+        {% for f in factures %}
+            <p><strong>Client : </strong> </p>
+            {# <li hidden>{{ f.idFacture}}</li> #}
+             <li>{{ f.idclient.getNom()}} </li>
+            <li>{{ f.idclient.getPrenom()}}</li>
+            {#  <li>{{ f.idclient}}</li>#}
+
+            <p> <strong> Plan Reservé : </strong> {{ f.numReservation.plan.getTitre()}} </p>
+
+            <p>  <strong> prix : </strong> {{ f.numReservation.plan.getPrix() }}  </p>
+           {#  <p> <strong>date de reservation :</strong> {{ f.date ? f.date|date('d-m-Y') : '' }}</p>#}
+            <p> <strong>date debut  de reservation :</strong> {{ f.numReservation.getDatedebut() ?f.numReservation.getDatedebut() | date('d-m-Y')  }}</p>
+            <p> <strong>date fin  de reservation :</strong> {{ f.numReservation.getDateFin() ?f.numReservation.getDateFin() | date('d-m-Y')  }}</p>
+
+
+        {% endfor %}
+
+           {#  </div>#}
+
+
+    <img height="auto" margin-left="20px" src="{{asset('Project/public/imag/preview.png')}}" alt="preview" width="25%"></br>
+
+       {#  <p>  <button type="button" class="btn btn-dark  btn-dark" margin="60%" href="{{ path('download_ind')}}">Download</button>   </p>#}
+     {#    <button>    <a href="{{ path('download_ind')}}">download</a>  </button>#}
+
+
+    </div>{# div container #}
+
+
+{#     <a href="{{ path('app_facture_index') }}"> download pdf</a>#}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{#
+{% endblock %} #}
+{#  <!-----------block body------------------------->#}{#
+
+
+
+ {% block stylesheet %}
+{{ parent() }}
+
+ {% endblock %}
+#}

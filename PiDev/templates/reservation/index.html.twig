@@ -1,0 +1,218 @@
+{% extends 'base.html.twig' %}
+
+
+
+{% block body %}
+
+{#
+<div class="container mt-5">
+    <h1>Reservation </h1>
+</div>
+#}
+
+
+
+
+{#    <table class="table">#}
+{#        <thead>#}
+{#            <tr>#}
+{#                 <th>Numreservation</th>#}
+{#               #}{#  <th>Plan</th>#}
+{#                 <th>Nbrplace</th>#}
+{#                <th>Datedebut</th>#}
+{#                <th>Datefin</th>#}
+{#                <th>actions</th>#}
+
+{#            </tr>#}
+{#        </thead>#}
+{#        <tbody>#}
+{#        {% for reservation in reservations %}#}
+
+{#            <tr>#}
+{#                 <td>{{ reservation.numreservation}}</td>#}
+{#                 <td>{{ reservation.plan }}</td>#}
+{#                <td>{{ reservation.nbrplace }}</td>#}
+{#                <td>{{ reservation.datedebut ? reservation.datedebut|date('Y-m-d') : '' }}</td>#}
+{#                <td>{{ reservation.datefin ? reservation.datefin|date('Y-m-d') : '' }}</td>#}
+{#                <td>#}
+{#                    <a href="{{ path('reservation_show', {'numreservation': reservation.numreservation}) }}">show</a>#}
+{#                    <a href="{{ path('reservation_edit', {'numreservation': reservation.numreservation}) }}">edit</a>#}
+{#                </td>#}
+{#            </tr>#}
+{#        {% else %}#}
+{#            <tr>#}
+{#                <td colspan="5">no records found</td>#}
+{#            </tr>#}
+
+
+{#        {% endfor %}#}
+{#        </tbody>#}
+{#    </table>#}
+
+   {#  <a href="{{ path('reservation_new') }}">Create new</a>#}
+
+    <div class="container mt-5" style="width:70%;margin: 100px auto ">
+        <h1>Reservation </h1>
+        {{ form_start(form) }}
+        <div class="row">
+            <div class="col md-1">
+                {{ form_label(form.nbrplace) }}
+                     {{ form_widget(form.nbrplace) }}
+                <div class="form-error">
+                    {{ form_errors(form.nbrplace) }}
+                </div>
+                </div>
+
+            <div class="col md-3" id="dateDebut">
+
+                {{ form_label(form.date_debut) }}
+                 {{ form_widget(form.date_debut) }}
+                <div class="form-error">
+                    {{ form_errors(form.date_debut) }}
+                </div>
+
+
+            </div>
+
+{#                {{ form_row(form.date_debut) }}#}
+
+            <div class="col md-4" id="dateFin">
+                {{ form_label(form.date_fin) }}
+                {{ form_widget(form.date_fin) }}
+                <div class="form-error">
+                    {{ form_errors(form.date_fin) }}
+                </div>
+            </div>
+
+
+
+
+{#                {{ form_row(form.date_fin) }}#}
+            <div class="col md-5" id="plan">
+                {{ form_label(form.plan) }}
+                {{ form_widget(form.plan) }}
+                <div class="form-error">
+                    {{ form_errors(form.plan) }}
+                </div>
+            </div>
+
+{#                    {{ form_row(form.plan)}}#}
+
+            </div> <br>
+
+
+
+      {# {{ form_row(form.idclient) }}#}
+
+
+
+    <div class="row">
+        <div class="col col-md-6 offset-md-4">
+            <div class ="form-group">
+                {{ form_row(form.captchaCode)  }}
+            </div>
+        </div>
+    </div>
+
+    {% set formErrors=form.vars.errors.form.getErrors(true) %}
+
+        {% if formErrors|length %}
+
+        <div class="alert alert-danger">
+            <ul>
+                {% for error in formErrors %}
+                    <li>{{ error.message }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+        {% endif %}
+
+    <div>
+        <button class="btn btn-dark">save</button>
+    </div>
+    {{ form_end(form) }}
+
+
+    </div>
+
+
+
+
+
+
+
+{#  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.js"></script>
+#}
+
+<script rel="stylesheet" src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script rel="stylesheet" src="https://code.jquery.com/ui/1.11.3/jquery-ui.js"></script>
+<link href="https://code.jquery.com/ui/1.11.3/themes/smoothness/jquery-ui.css" rel="stylesheet"/>
+
+
+<script>
+$(document).ready(function(){
+    const minDate =new Date();
+    $('.js-datepicker').datepicker({
+            showAnim:"drop",
+            numberOfMonth:1,
+            dateFormat:'yy-mm-dd',
+            minDate:minDate,
+            onClose: function (selectedDate){
+                 $('#return').datepicker("option","minDate",selectedDate);
+
+            }
+    });
+
+
+});
+
+/*function calculateDaysDiff(){
+//var dateDeb=document.getElementById("dateDebut").value;
+//var dateFin=document.getElementById("dateFin").value;
+var dateD=  new Date($('#dateDebut').val())  ;
+var dateF=new Date($('#dateFin').val());
+//const time = Math.abs(dateF - dateD) ;
+var time = Math.round(Math.abs( dateF.getTime() - dateD.getTime() ) );
+var days =time / (1000*60*60*24);
+
+alert(days);
+}*/
+
+
+
+
+
+
+
+
+
+</script>
+
+ {# <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.js"></script>
+ #}
+{#
+<script>
+$(document).ready(function() {
+        // you may need to change this code if you are not using Bootstrap Datepicker
+        $('.js-datepicker').datepicker({
+            format: 'dd-mm-yyyy'
+        });
+    });
+</script>
+#}
+
+
+{% endblock %}
+
+
+
+
+{% block stylesheet %}
+    {{ parent() }}
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.css" rel="stylesheet"/>
+{% endblock %}
+
+
+
+
+

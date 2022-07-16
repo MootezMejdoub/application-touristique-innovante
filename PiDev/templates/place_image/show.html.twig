@@ -1,0 +1,27 @@
+{% extends 'basebaha.html.twig' %}
+
+{% block title %}PlaceImage{% endblock %}
+
+{% block body %}
+    {{ include('my_side_bar_back_office.html.twig') }}
+    <h1>PlaceImage</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ place_image.id }}</td>
+            </tr>
+            <tr>
+                <th>Path</th>
+                <td>{{ place_image.path }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_place_image_index') }}">back to list</a>
+
+    <a href="{{ path('app_place_image_edit', {'id': place_image.id}) }}">edit</a>
+
+    {{ include('place_image/_delete_form.html.twig') }}
+{% endblock %}

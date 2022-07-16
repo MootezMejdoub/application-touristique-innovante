@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Interest{% endblock %}
+
+{% block body %}
+    <h1>Interest</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>IdIntrest</th>
+                <td>{{ interest.idIntrest }}</td>
+            </tr>
+            <tr>
+                <th>Sport</th>
+                <td>{{ interest.sport }}</td>
+            </tr>
+            <tr>
+                <th>History</th>
+                <td>{{ interest.history ? 'Yes' : 'No' }}</td>
+            </tr>
+            <tr>
+                <th>Food</th>
+                <td>{{ interest.food ? 'Yes' : 'No' }}</td>
+            </tr>
+            <tr>
+                <th>Health</th>
+                <td>{{ interest.health ? 'Yes' : 'No' }}</td>
+            </tr>
+            <tr>
+                <th>Score</th>
+                <td>{{ interest.score }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_interest_index') }}">back to list</a>
+
+    <a href="{{ path('app_interest_edit', {'idIntrest': interest.idIntrest}) }}">edit</a>
+
+    {{ include('interest/_delete_form.html.twig') }}
+{% endblock %}

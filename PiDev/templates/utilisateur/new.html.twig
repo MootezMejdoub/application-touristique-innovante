@@ -1,0 +1,175 @@
+
+
+
+
+
+
+    <!doctype html>
+    <html lang="en">
+    <head>
+        <title>MatchiGo</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+        <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700&display=swap" rel="stylesheet">
+
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+        <link rel="stylesheet" href="../../css/css/style.css">
+
+
+    </head>
+    <body class="img" style="background-image: url(../../../images/bg_2.jpg);">
+    <section class="ftco-section">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-md-6 text-center mb-5">
+                    <h2 class="heading-section">Sign Up in MatchiGo</h2>
+                </div>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-md-7 col-lg-5">
+                    <div class="login-wrap">
+                        <h3 class="text-center mb-4">Create Your Account</h3>
+
+                        {# <form action="#" class="signup-form"> #}
+                        {{ form_start(form,{attr:{novalidate:'novalidate'}}) }}
+
+
+
+
+
+                        <div class="form-group mb-3">
+                                <label class="label" for="name">Full Name</label>
+                              {#  <input type="text" class="form-control" placeholder="Nom">#}
+                                {{ form_widget(form.nom,{'attr':{'class':'form-control' ,'placeholder':'Nom'}}) }}
+
+                            <span class="icon fa fa-user-o"></span>
+
+                        </div>
+                        {{ form_errors(form.nom,{'attr':{'class': 'text-danger'}}) }}
+
+                        <div class="form-group mb-3">
+                                <label class="label" for="name">Prenom</label>
+                                {# <input type="text" class="form-control" placeholder="Prenom"> #}
+                                {{ form_widget(form.prenom,{'attr':{'class':'form-control' ,'placeholder':'Prenom'}}) }}
+
+                                <span class="icon fa fa-user-o"></span>
+
+                            </div>
+                        {{ form_errors(form.prenom,{'attr':{'class': 'text-danger'}}) }}
+
+                        <div class="form-group mb-3">
+                                <label class="label" for="email">Email Address</label>
+
+                                {{ form_widget(form.email,{'attr':{'class':'form-control' ,'placeholder':'Exemple@gmail.com'}}) }}
+                                <span class="icon fa fa-paper-plane-o"></span>
+
+                            </div>
+                        {{ form_errors(form.email,{'attr':{'class': 'text-danger'}}) }}
+
+                        <div class="form-group mb-3">
+                                <label class="label" for="Numtel">Telephone</label>
+                                {{ form_widget(form.numTel,{'attr':{'class':'form-control' ,'placeholder':'Numero de Téléphone'}}) }}
+
+
+
+                                <span class="icon fa fa-phone-o"></span>
+
+                            </div>
+                        {{ form_errors(form.numTel,{'attr':{'class': 'text-danger'}}) }}
+
+                        <div class="form-group mb-3">
+                                <label class="label" for="DateNaissance">Date naissance</label>
+                                {#  <input type="date" class="form-control" placeholder="Date naissance">#}
+                                {{ form_widget(form.dateNaissance) }}
+
+
+
+                            </div>
+                        {{ form_errors(form.dateNaissance,{'attr':{'class': 'text-danger'}}) }}
+
+                        <div class="form-group mb-3">
+                            <label class="label" for="DateNaissance">Adresse</label>
+                            {#  <input type="date" class="form-control" placeholder="Date naissance">#}
+                            {{ form_widget(form.adresse,{'attr':{'class':'form-control' ,'placeholder':'Adresse'}}) }}
+
+
+
+                        </div>
+                        {{ form_errors(form.adresse,{'attr':{'class': 'text-danger'}}) }}
+
+                        <div class="form-group mb-3">
+                                <label class="label" for="Role">Role</label>
+                                <div class="p-t-10">
+                                 {#  <label class="radio-container m-r-45">SimpleUser
+                                        {#  <input type="radio" checked="checked" name="role">
+                                        <span class="checkmark"></span>
+                                    </label>
+                                    <label class="radio-container"><br>Guide
+                                        #}
+                                        {# <input type="radio" name="role"> #}
+                                        {{ form_widget(form.roles,{'attr':{'class':'' ,'placeholder':'Role'}}) }}
+
+
+
+                                    <span class="checkmark"></span>
+
+                                    </label>
+                                    {{ form_errors(form.roles,{'attr':{'class': 'text-danger'}}) }}
+
+                                </div>
+
+                            </div>
+
+
+                            <div class="form-group mb-3">
+                                <label class="label" for="password">Password</label>
+                                {#  <input id="password" type="password" class="form-control" placeholder="Password">#}
+                                {{ form_widget(form.mdp,{'attr':{'class':'form-control' ,'placeholder':'Mot de passe'}}) }}
+
+
+                                <span toggle="#password" class="fa fa-fw fa-eye field-icon toggle-password"></span>
+                                <span class="icon fa fa-lock"></span>
+
+                            </div>
+                        {{ form_errors(form.mdp,{'attr':{'class': 'text-danger'}}) }}
+
+
+                        <div class="form-group mb-3">
+                                <label class="label" for="password">Confirm Password</label>
+                            {{ form_widget(form.confmdp,{'attr':{'class':'form-control' ,'placeholder':'Confirm password'}}) }}
+                                <span toggle="#password-confirm" class="fa fa-fw fa-eye field-icon toggle-password"></span>
+                                <span class="icon fa fa-lock"></span>
+                            </div>
+                        {{ form_errors(form.confmdp,{'attr':{'class': 'text-danger'}}) }}
+
+                        <div class="form-group">
+                                {#  <button type="submit" action="{{ path('app_utilisateur_new') }}" class="form-control btn btn-primary submit px-3">Sign Up</button>#}
+                            </div>
+
+                            <button  class="form-control btn btn-primary submit px-3"> {{ button_label|default('Sign Up') }}</button>
+
+
+
+                        {{ form_end(form) }}
+                       {# </form>#}
+
+
+                        <p>I'm already a member!  <a href="{{ path('app_login') }}">login</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script src="../../../js/jquery.min.js"></script>
+    <script src="../../../js/popper.js"></script>
+    <script src="../../../js/bootstrap.min.js"></script>
+    <script src="../../../js/main.js"></script>
+
+    </body>
+    </html>
+
+
+

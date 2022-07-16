@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Matching{% endblock %}
+
+{% block body %}
+    <h1>Create new Matching</h1>
+
+    {{ include('matching/_form.html.twig') }}
+
+    <a href="{{ path('app_matching_index') }}">back to list</a>
+{% endblock %}

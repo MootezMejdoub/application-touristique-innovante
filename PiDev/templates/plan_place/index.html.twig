@@ -1,0 +1,34 @@
+{% extends 'basebaha.html.twig' %}
+
+{% block title %}PlanPlace index{% endblock %}
+
+{% block body %}
+    {{ include('my_side_bar_back_office.html.twig') }}
+    <h1>PlanPlace index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Ref</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for plan_place in plan_places %}
+            <tr>
+                <td>{{ plan_place.ref }}</td>
+                <td>
+                    <a href="{{ path('app_plan_place_show', {'ref': plan_place.ref}) }}">show</a>
+                    <a href="{{ path('app_plan_place_edit', {'ref': plan_place.ref}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="2">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+
+{% endblock %}

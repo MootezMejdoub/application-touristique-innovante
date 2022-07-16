@@ -1,0 +1,54 @@
+{% extends 'back.html.twig' %}
+
+{% block title %}Interest index{% endblock %}
+
+{% block body %}
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $("#myInput").on("keyup", function() {
+                var value = $(this).val().toLowerCase();
+                $("#rech tr").filter(function() {
+                    $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+                });
+            });
+        });
+    </script>
+
+    <h1>Interest index</h1>
+    <input class="form-control" id="myInput" type="text" id="navbar-search-input" placeholder="Search now" aria-label="search" aria-describedby="search">
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>History</th>
+                <th>Food</th>
+                <th>Health</th>
+                <th>Score</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody id="rech">
+        {% for interest in interests %}
+            <tr>
+                <td>{{ interest.history ? 'Yes' : 'No' }}</td>
+                <td>{{ interest.food ? 'Yes' : 'No' }}</td>
+                <td>{{ interest.health ? 'Yes' : 'No' }}</td>
+                <td>{{ interest.score }}</td>
+                <td>
+                    <a href="{{ path('app_interest_show', {'idIntrest': interest.idIntrest}) }}">show</a>
+                    <a href="{{ path('app_interest_edit', {'idIntrest': interest.idIntrest}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="7">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_interest_new') }}">Create new</a>
+{% endblock %}

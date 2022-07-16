@@ -1,0 +1,82 @@
+
+{% extends 'base3.html.twig' %}
+
+
+
+{% block body %}
+
+    <div class="hero-wrap js-fullheight" style="background-image: url('../../images/bg_2.jpg'); height: 754px;">
+        <div class="overlay"></div>
+        <div class="container">
+            <div class="row no-gutters slider-text js-fullheight align-items-center justify-content-center" data-scrollax-parent="true" style="height: 754px;">
+                <div class="col-md-9 ftco-animate text-center fadeInUp ftco-animated" data-scrollax=" properties: { translateY: '70%' }" style="transform: translateZ(0px) translateY(0%);">
+                    <p class="breadcrumbs" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }" style="opacity: 1; transform: translateZ(0px) translateY(0%);"><span class="mr-2"><a href="index.html">Home</a></span> <span>Tour</span></p>
+                    <h1 class="mb-3 bread" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }" style="opacity: 1; transform: translateZ(0px) translateY(0%);">Votre compte</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div  class="col-12 grid-margin">
+    <div class="card">
+    <div class="card-body">
+    <div class="row ">
+        <div class="col-12 grid-margin">
+            <div class="card">
+                <div class="card-body">
+                    <h1>Utilisateur</h1>
+
+                    <table class="table">
+                        <tbody>
+
+                        <tr>
+                            <th>Nom</th>
+                            <td>{{ utilisateur.nom }}</td>
+                        </tr>
+                        <tr>
+                            <th>Prenom</th>
+                            <td>{{ utilisateur.prenom }}</td>
+                        </tr>
+                        <tr>
+                            <th>DateNaissance</th>
+                            <td>{{ utilisateur.dateNaissance ? utilisateur.dateNaissance|date('Y-m-d') : '' }}</td>
+                        </tr>
+                        <tr>
+                            <th>Adresse</th>
+                            <td>{{ utilisateur.adresse }}</td>
+                        </tr>
+                        <tr>
+                            <th>NumTel</th>
+                            <td>{{ utilisateur.numTel }}</td>
+                        </tr>
+                        <tr>
+                            <th>Email</th>
+                            <td>{{ utilisateur.email }}</td>
+                        </tr>
+
+
+
+                        </tbody>
+                    </table>
+
+                    {#     <a href="{{ path('app_utilisateur_index') }}">back to list</a>
+                    #}
+                    <a href="{{ path('app_utilisateur_useredit', {'id': utilisateur.id}) }}">edit</a>
+
+
+
+                    {{ include('utilisateur/_delete_form.html.twig') }}
+                </div>
+                <!-- partial -->
+            </div>
+            <!-- main-panel ends -->
+        </div>
+        <!-- page-body-wrapper ends -->
+    </div>
+    </div>
+    </div>
+    </div>
+
+
+
+{% endblock %}

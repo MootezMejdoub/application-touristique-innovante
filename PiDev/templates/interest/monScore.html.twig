@@ -1,0 +1,14 @@
+{% extends 'frontt.html.twig' %}
+
+
+{% block body %}
+    <h4 style="text-align: center !important;"> Mon Score : {{ interest.score}} </h4><br><br>
+    <p class="bottom-area d-flex">
+        <span class="ml-auto"><a href="{{ path('app_interest_edit', {'idIntrest': interest.idIntrest}) }}">Edit</a></span>
+    </p>
+
+
+
+
+
+{% endblock %}

@@ -1,0 +1,21 @@
+
+
+{% form_theme form 'bootstrap_4_layout.html.twig' %}
+
+{{ form_start(form, {'attr': {'novalidate': 'novalidate'}}) }}
+    {{ form_widget(form) }}
+{{ form_errors(form) }}
+{{ form_help(form.description) }}
+<script src="https://www.google.com/recaptcha/api.js" async defer></script>
+
+
+<form method="post" class="container">
+
+
+    <div class="border-left">
+        <div  class="g-recaptcha" data-sitekey="6Ldwe3kfAAAAAICv-KVwuE7r-KdM6gJ-Y3Pb22A3"></div>
+    </div>
+    <br>
+
+    <button  name="submit" class="btnSave">{{ button_label|default('Save') }}</button></form>
+{{ form_end(form) }}

@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>MACHI GO - Travel Freely</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Alex+Brush" rel="stylesheet">
+
+    <link rel="stylesheet" href="{{ asset('frontt/css/open-iconic-bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('frontt/css/animate.css') }}">
+
+    <link rel="stylesheet" href="{{ asset('frontt/css/owl.carousel.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('frontt/css/owl.theme.default.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('frontt/css/magnific-popup.css') }}">
+
+    <link rel="stylesheet" href="{{ asset('frontt/css/aos.css') }}">
+
+    <link rel="stylesheet" href="{{ asset('frontt/css/ionicons.min.css') }}">
+
+    <link rel="stylesheet" href="{{ asset('frontt/css/bootstrap-datepicker.css') }}">
+    <link rel="stylesheet" href="{{ asset('frontt/css/jquery.timepicker.css') }}">
+
+
+    <link rel="stylesheet" href="{{ asset('frontt/css/flaticon.css') }}">
+    <link rel="stylesheet" href="{{ asset('frontt/css/icomoon.css') }}">
+    <link rel="stylesheet" href="{{ asset('frontt/css/style.css') }}">
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
+    <div class="container">
+        <a class="navbar-brand" href="index.html">dirEngine.</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="oi oi-menu"></span> Menu
+        </button>
+
+        <div class="collapse navbar-collapse" id="ftco-nav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item active"><a href="index.html" class="nav-link">Home</a></li>
+                <li class="nav-item"><a href="{{ path('app_interest_new') }}" class="nav-link">Add Interst</a></li>
+                <li class="nav-item"><a href="{{ path('app_interest_show') }}" class="nav-link">Show Score</a></li>
+                <li class="nav-item"><a href="{{ path('app_matching_index') }}" class="nav-link">List Profil </a></li>
+                <li class="nav-item"><a href="blog.html" class="nav-link">Blog</a></li>
+                <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
+
+            </ul>
+        </div>
+    </div>
+</nav>
+<!-- END nav -->
+
+<div class="hero-wrap js-fullheight" style="background-image: url({{ asset('frontt/images/bg_1.jpg') }});">
+    <div class="overlay"></div>
+    <div class="container">
+        <div class="row no-gutters slider-text js-fullheight align-items-center justify-content-start" data-scrollax-parent="true">
+            <div class="col-md-9 ftco-animate" data-scrollax=" properties: { translateY: '70%' }">
+                <h1 class="mb-4" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }"><strong>Explore <br></strong> your amazing city</h1>
+                <p data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">Find great places to stay, eat, shop, or visit from local experts</p>
+                <div class="block-17 my-4">
+                    <form action="" method="post" class="d-block d-flex">
+                        <div class="fields d-block d-flex">
+                            <div class="textfield-search one-third">
+                                <input type="text" class="form-control" placeholder="Ex: food, service, hotel">
+                            </div>
+                            <div class="select-wrap one-third">
+                                <div class="icon"><span class="ion-ios-arrow-down"></span></div>
+                                <select name="" id="" class="form-control" placeholder="Keyword search">
+                                    <option value="">Where</option>
+                                    <option value="">San Francisco USA</option>
+                                    <option value="">Berlin Germany</option>
+                                    <option value="">Lodon United Kingdom</option>
+                                    <option value="">Paris Italy</option>
+                                </select>
+                            </div>
+                        </div>
+                        <input type="submit" class="search-submit btn btn-primary" value="Search">
+                    </form>
+                </div>
+                <p>Or browse the highlights</p>
+                <p class="browse d-md-flex">
+                <li class="nav-item"><a href={{  path("app_matching_index") }} class="nav-link">Liste profil</a></li>
+                <li class="nav-item"><a href={{  path("app_interest_show")  }} class="nav-link">Add score</a></li>
+                <li class="nav-item"><a href="{{ path('app_interest_new') }}" class="nav-link">add interest</a></li>
+
+                <  <li class="nav-item"><a href={{  path("app_place_index") }} class="nav-link">Place</a></li>
+                <li class="nav-item"><a href={{  path("app_plan_index")  }} class="nav-link">Plan</a></li>
+                <li class="nav-item"><a href="{{ path('reservation_new') }}" class="nav-link">Reservation</a></li>
+
+                <li class="nav-item"><a href="" class="nav-link">Contact</a></li>
+                <li class="nav-item"><a href="{{ path('app_blog_index') }}" class="nav-link">Blog</a></li>
+                <li class="nav-item"><a href="{{ path('app_reclamation_new') }}" class="nav-link">Reclamation</a></li>
+                <li class="nav-item cta"><a href="{{ path('app_chat_index') }}" class="nav-link" target="_blank"><span>Live Chat</span></a></li>
+
+                <li class="nav-item cta"><a href="{{ path('app_logout') }}" class="nav-link"><span>Logout</span></a></li>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<section class="ftco-section services-section bg-light">
+    <div class="container">
+        <div class="row d-flex">
+            <div class="col-md-3 d-flex align-self-stretch ftco-animate">
+                <div class="media block-6 services d-block text-center">
+                    <div class="d-flex justify-content-center"><div class="icon"><span class="flaticon-guarantee"></span></div></div>
+                    <div class="media-body p-2 mt-2">
+                        <h3 class="heading mb-3">Best Price Guarantee</h3>
+                        <p>A small river named Duden flows by their place and supplies.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 d-flex align-self-stretch ftco-animate">
+                <div class="media block-6 services d-block text-center">
+                    <div class="d-flex justify-content-center"><div class="icon"><span class="flaticon-like"></span></div></div>
+                    <div class="media-body p-2 mt-2">
+                        <h3 class="heading mb-3">Travellers Love Us</h3>
+                        <p>A small river named Duden flows by their place and supplies.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 d-flex align-self-stretch ftco-animate">
+                <div class="media block-6 services d-block text-center">
+                    <div class="d-flex justify-content-center"><div class="icon"><span class="flaticon-detective"></span></div></div>
+                    <div class="media-body p-2 mt-2">
+                        <h3 class="heading mb-3">Best Travel Agent</h3>
+                        <p>A small river named Duden flows by their place and supplies.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 d-flex align-self-stretch ftco-animate">
+                <div class="media block-6 services d-block text-center">
+                    <div class="d-flex justify-content-center"><div class="icon"><span class="flaticon-support"></span></div></div>
+                    <div class="media-body p-2 mt-2">
+                        <h3 class="heading mb-3">Our Dedicated Support</h3>
+                        <p>A small river named Duden flows by their place and supplies.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="ftco-section ftco-destination">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                {% block body %} {% endblock %}
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+
+<!-- loader -->
+<div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"/></svg></div>
+
+
+<script src="{{ asset('frontt/js/jquery.min.js') }}"></script>
+<script src="{{ asset('frontt/js/jquery-migrate-3.0.1.min.js') }}"></script>
+<script src="{{ asset('frontt/js/popper.min.js') }}"></script>
+<script src="{{ asset('frontt/js/bootstrap.min.js') }}"></script>
+<script src="{{ asset('frontt/js/jquery.easing.1.3.js') }}"></script>
+<script src="{{ asset('frontt/js/jquery.waypoints.min.js') }}"></script>
+<script src="{{ asset('frontt/js/jquery.stellar.min.js') }}"></script>
+<script src="{{ asset('frontt/js/owl.carousel.min.js') }}"></script>
+<script src="{{ asset('frontt/js/jquery.magnific-popup.min.js') }}"></script>
+<script src="{{ asset('frontt/js/aos.js') }}"></script>
+<script src="{{ asset('frontt/js/jquery.animateNumber.min.js') }}"></script>
+<script src="{{ asset('frontt/js/bootstrap-datepicker.js') }}"></script>
+<script src="{{ asset('frontt/js/jquery.timepicker.min.js') }}"></script>
+<script src="{{ asset('frontt/js/scrollax.min.js') }}"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
+<script src="{{ asset('frontt/js/google-map.js') }}"></script>
+<script src="{{ asset('frontt/js/main.js') }}"></script>
+
+</body>
+</html>

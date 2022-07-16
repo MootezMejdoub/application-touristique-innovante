@@ -1,0 +1,79 @@
+
+
+{% extends 'base.html.twig' %}
+
+{%  block content %}
+    <div class="section1">
+        <video id="background-video" autoplay loop muted>
+            <source src="{{ asset('images/tunisia.mp4') }}" type="video/mp4">
+        </video>
+    </div>
+
+    <section class="ftco-section bg-light">
+
+        <div class="container">
+
+            <div class="comment-form-wrap pt-5">
+                <h3 class="mb-5">EDIT BLOG</h3>
+                {{ include('blog/_form.html.twig', {'button_label': 'Update'}) }}
+                {#  <form action="#" class="p-5 bg-light">
+                    {{ include('blog/_form.html.twig') }}
+                    <div class="form-group">
+                        <label for="name">Name *</label>
+                        <input type="text" class="form-control" id="name">
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email *</label>
+                        <input type="email" class="form-control" id="email">
+                    </div>
+                    <div class="form-group">
+                        <label for="website">Website</label>
+                        <input type="url" class="form-control" id="website">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="message">Message</label>
+                        <textarea name="" id="message" cols="30" rows="10" class="form-control"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" value="Post Comment" class="btn py-3 px-4 btn-primary">
+                    </div>
+
+                </form> #}
+            </div>
+        </div>
+
+        <div class="row mt-5">
+            <div class="col text-center">
+                <div class="block-27">
+                    <ul>
+                        <li><a href="#">&lt;</a></li>
+                        <li class="active"><span>1</span></li>
+                        {#     <li><a href="#">2</a></li>
+                            <li><a href="#">3</a></li>
+                            <li><a href="#">4</a></li>
+                            <li><a href="#">5</a></li> #}
+                        <li><a href="#">&gt;</a></li>
+                    </ul>
+                    <a href="{{ path('app_blog_index') }}">back to blogs</a>
+                </div>
+            </div>
+        </div>
+        </div>
+    </section>
+
+
+
+{% endblock  %}
+
+
+
+{% block body %}
+    <h1>Edit Blog</h1>
+
+    {{ include('blog/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('app_blog_index') }}">back to list</a>
+
+    {{ include('blog/_delete_form.html.twig') }}
+{% endblock %}

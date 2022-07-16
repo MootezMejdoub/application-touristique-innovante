@@ -1,0 +1,19 @@
+{% extends 'basebaha.html.twig' %}
+
+{% block title %}New PlanPlace{% endblock %}
+
+{% block body %}
+    {{ include('my_side_bar_back_office.html.twig') }}
+    <link rel="stylesheet" href="{{ asset('bundles/mercuryseriesflashy/css/flashy.css') }}">
+    <h1>Create new PlanPlace</h1>
+
+    {{ include('plan_place/_form.html.twig') }}
+
+    <a href="{{ path('app_plan_place_index') }}">back to list</a>
+    <!-- Flashy depends on jQuery -->
+    <script src="//code.jquery.com/jquery.js"></script>
+    <!-- Load Flashy default JavaScript -->
+    <script src="{{ asset('bundles/mercuryseriesflashy/js/flashy.js') }}"></script>
+    <!-- Include Flashy default partial -->
+    {{ include('@MercurySeriesFlashy/flashy.html.twig') }}
+{% endblock %}

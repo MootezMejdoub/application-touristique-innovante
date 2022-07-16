@@ -1,0 +1,12 @@
+{% extends 'basebaha.html.twig' %}
+
+{% block title %}New PlaceImage{% endblock %}
+
+{% block body %}
+    {{ include('my_side_bar_back_office.html.twig') }}
+    <h1>Create new PlaceImage</h1>
+
+    {{ include('place_image/_form.html.twig') }}
+
+    <a href="{{ path('app_place_image_index') }}">back to list</a>
+{% endblock %}

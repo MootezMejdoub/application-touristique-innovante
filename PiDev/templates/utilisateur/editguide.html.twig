@@ -1,0 +1,114 @@
+{% extends 'base3.html.twig' %}
+
+
+{% block body %}
+
+    <div class="hero-wrap js-fullheight" style="background-image: url('../../../images/bg_2.jpg'); height: 754px;">
+        <div class="overlay"></div>
+        <div class="container">
+            <div class="row no-gutters slider-text js-fullheight align-items-center justify-content-center" data-scrollax-parent="true" style="height: 754px;">
+                <div class="col-md-9 ftco-animate text-center fadeInUp ftco-animated" data-scrollax=" properties: { translateY: '70%' }" style="transform: translateZ(0px) translateY(0%);">
+                    <p class="breadcrumbs" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }" style="opacity: 1; transform: translateZ(0px) translateY(0%);"><span class="mr-2"><a href="index.html">Home</a></span> <span>Tour</span></p>
+                    <h1 class="mb-3 bread" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }" style="opacity: 1; transform: translateZ(0px) translateY(0%);">Modifier votre compte</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div  class="col-12 grid-margin">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Modify your account</h4>
+                {{ form_start(form) }}
+                <p class="card-description"> Personal info </p>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group row">
+                            <label class="col-sm-3 col-form-label">Prenom</label>
+                            <div class="col-sm-9">
+                                {{ form_widget(form.prenom,{'attr':{'class':'form-control' ,'placeholder':'Prenom'}}) }}
+
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-sm-3 col-form-label">Nom</label>
+                            <div class="col-sm-9">
+                                {{ form_widget(form.nom,{'attr':{'class':'form-control' ,'placeholder':'Nom'}}) }}
+
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-sm-3 col-form-label">Num Tel</label>
+                            <div class="col-sm-9">
+                                {{ form_widget(form.numTel,{'attr':{'class':'form-control' ,'placeholder':'Numero de telephone'}}) }}
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label class="col-sm-3 col-form-label">Email</label>
+                            <div class="col-sm-9">
+                                {{ form_widget(form.email,{'attr':{'class':'form-control' ,'placeholder':'Exemple@gmail.com'}}) }}
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="col-md-6">
+
+                    </div>
+                </div>
+                <div class="row">
+
+                    <div class="col-md-6">
+                        <div class="form-group row">
+                            <label class="col-sm-3 col-form-label">Date naissance</label>
+                            <div class="col-sm-9">
+
+                                {{ form_widget(form.dateNaissance) }}
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group row">
+                            <label class="col-sm-3 col-form-label">Adresse</label>
+                            <div class="col-sm-9">
+                                {{ form_widget(form.adresse,{'attr':{'class':'form-control' ,'placeholder':'Adresse'}}) }}
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+
+
+            </div>
+            {#   <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group row">
+
+
+                            <label class="col-sm-3 col-form-label">Mot de passe</label>
+                            <div class="col-sm-9">
+                                {{ form_widget(form.mdp,{'attr':{'type':'password','class':'passwordType' ,'placeholder':'Password'}}) }}
+                            </div>
+                        </div>
+                    </div>
+            #}
+
+        </div>
+        <button class="form-control btn btn-primary submit px-3">{{ button_label|default('Save') }}</button>
+
+        {{ form_end(form) }}
+    </div>
+    </div>
+    </div>
+
+    <a href="{{ path('app_utilisateur_showguide',{'id': app.user.id}) }}">back to list</a>
+
+    {{ include('utilisateur/_delete_form.html.twig') }}
+{% endblock %}

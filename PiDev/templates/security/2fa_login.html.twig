@@ -1,0 +1,10 @@
+
+ <p class="label"> <label for="_auth_code">auth_code google:</label></p>
+ <img alt="QR Code" name="imageQRcode" id="imageQRcode" src="{{ qrCode }}">
+
+ <form class="form" action="{{ path('2fa', {'qrCode': qrCode}) }}" method="post">
+     <p class="widget"> <input id="_auth_code" type="text" autocomplete="off" name="_auth_code"></p>
+     <p class="submit"> <input type="submit" value="login"></p>
+
+ </form>
+ <p class="cancel"><a href="/logout">cancel</a></p>

@@ -1,0 +1,92 @@
+
+
+{% extends 'base3.html.twig' %}
+
+
+{% block body %}
+
+
+    <h1>Edit Commentaire</h1>
+
+
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+
+
+
+
+<link rel="stylesheet" href="../../../css/styles.css">
+
+
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+<div class="container">
+
+    <div class="be-comment-block">
+
+
+
+
+
+
+
+
+
+        <div class="be-comment">
+            <div class="be-img-comment">
+                <a href="blog-detail-2.html">
+                    <img src="https://bootdey.com/img/Content/avatar/avatar1.png" alt="" class="be-ava-comment">
+                </a>
+            </div>
+            <div class="be-comment-content">
+
+				<span class="be-comment-name">
+
+					</span>
+                <span class="be-comment-time">
+					<i class="fa fa-clock-o"></i>
+					May 27, 2015 at 3:14am
+				</span>
+
+                {{ form_start(form) }}
+
+                {{ form_widget(form.contenu,{'attr':{'class':'form-control' ,'placeholder':'Type your comment here'}}) }}
+
+
+
+
+            </div>
+
+
+        </div>
+
+
+        <form class="form-block">
+            <div  class="row">
+
+                <div  class="col-xs-12 col-sm-6 fl_icon">
+
+                    {{ include('commentaire/_form.html.twig', {'button_label': 'Update'}) }}     {{ include('commentaire/_delete_form.html.twig') }}
+
+
+
+                    {{ form_end(form) }}
+
+                </div>
+
+
+            </div>
+
+        </form>
+
+    </div>
+
+</div>
+
+
+
+
+
+
+    <a href="{{ path('app_commentaire_index') }}">back to Comments</a>
+
+
+{% endblock %}

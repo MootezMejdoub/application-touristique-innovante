@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Matching{% endblock %}
+
+{% block body %}
+    <h1>Matching</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>IdMatch</th>
+                <td>{{ matching.idMatch }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_matching_index') }}">back to list</a>
+
+    <a href="{{ path('app_matching_edit', {'idMatch': matching.idMatch}) }}">edit</a>
+
+    {{ include('matching/_delete_form.html.twig') }}
+{% endblock %}

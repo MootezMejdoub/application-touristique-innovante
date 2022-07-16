@@ -1,0 +1,31 @@
+<p align="center" class="card-description">  <code>Liste des Reclamations</code>
+
+</p>
+<div class="table-responsive">
+    <table align="center" border="1">
+        <thead>
+        <tr>
+
+            <th> Description</th>
+            <th> Reference </th>
+            <th> Date </th>
+            <th> Etat </th>
+
+        </tr>
+        </thead>
+        <tbody>
+        {% for r in reclamations %}
+            <tr>
+                <td> {{ r.description }} </td>
+                <td> {{ r.recReference}} </td>
+                <td> {{ r.date| date('Y-m-d')  }} </td>
+                <td> {{ r.etat }} </td>
+
+            </tr>
+        {% endfor %}
+
+
+        </tr>
+        </tbody>
+    </table>
+</div>

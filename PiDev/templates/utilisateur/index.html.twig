@@ -1,0 +1,122 @@
+{% extends 'base1.html.twig' %}
+
+
+
+
+
+
+{% block body %}
+<div class="row ">
+    <div class="col-12 grid-margin">
+        <div class="card">
+            <div class="card-body">
+
+                <div class="form-group">
+                    <input class="form-control" type="text" id="search" placeholder="chercher un utilisateur">
+
+                </div>
+                <div style="margin-top: 20px">
+
+<div id="result-search">
+
+</div>
+                </div>
+
+                <table class="table" id="tableac">
+                    <thead>
+                    <tr>
+
+                        <th>Nom</th>
+                        <th>Prenom</th>
+                        <th>DateNaissance</th>
+                        <th>Adresse</th>
+                        <th>NumTel</th>
+                        <th>Email</th>
+
+
+
+                        <th>show</th>
+                        <th>edit</th>
+                        <th>delete</th>
+
+
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for utilisateur in utilisateurs %}
+                        <tr>
+
+                            <td>{{ utilisateur.nom }}</td>
+                            <td>{{ utilisateur.prenom }}</td>
+                            <td>{{ utilisateur.dateNaissance ? utilisateur.dateNaissance|date('Y-m-d') : '' }}</td>
+                            <td>{{ utilisateur.adresse }}</td>
+                            <td>{{ utilisateur.numTel }}</td>
+                            <td>{{ utilisateur.email }}</td>
+
+
+
+                            <td>
+                                <a href="{{ path('app_utilisateur_edit', {'id': utilisateur.id}) }}">show</a>
+
+
+                            </td>
+                            <td>
+                                <a href="{{ path('app_utilisateur_edit', {'id': utilisateur.id}) }}">edit</a>
+
+
+                            </td>
+                            <td>
+                                {{ include('utilisateur/_delete_form.html.twig') }}
+
+
+                            </td>
+                        </tr>
+                    {% else %}
+                        <tr>
+                            <td colspan="12">no records found</td>
+                        </tr>
+                    {% endfor %}
+
+                    </tbody>
+                </table>
+
+            </div>
+                <!-- partial -->
+            </div>
+            <!-- main-panel ends -->
+        </div>
+        <!-- page-body-wrapper ends -->
+    </div>
+    <script src="{{ asset('assets/js/jquery.min.js') }}"></script>
+    <script>
+        $(document).ready(function(){
+            $('#search').keyup(function(){
+                search_table($(this).val());
+            });
+            function search_table(value){
+                $('#tableac tbody tr').each(function(){
+                    var found = 'false';
+                    $(this).each(function(){
+                        if($(this).text().toLowerCase().indexOf(value.toLowerCase()) >= 0)
+                        {
+                            found = 'true';
+                        }
+                    });
+                    if(found == 'true')
+                    {
+                        $(this).show();
+
+                    }
+                    else
+                    {
+                        $(this).hide();
+
+                    }
+                });
+            }
+        });
+    </script>
+
+{% endblock %}
+
+

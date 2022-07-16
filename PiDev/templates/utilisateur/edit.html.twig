@@ -1,0 +1,112 @@
+{% extends 'base1.html.twig' %}
+
+{% block title %}Edit Utilisateur{% endblock %}
+
+{% block body %}
+    <h1>Edit Utilisateur</h1>
+
+
+    <div  class="col-12 grid-margin">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Your account</h4>
+                {{ form_start(form) }}
+                    <p class="card-description"> Personal info </p>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group row">
+                                <label class="col-sm-3 col-form-label">Prenom</label>
+                                <div class="col-sm-9">
+                                    {{ form_widget(form.prenom,{'attr':{'class':'form-control' ,'placeholder':'Prenom'}}) }}
+
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-sm-3 col-form-label">Nom</label>
+                                <div class="col-sm-9">
+                                    {{ form_widget(form.nom,{'attr':{'class':'form-control' ,'placeholder':'Nom'}}) }}
+
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-sm-3 col-form-label">Num Tel</label>
+                                <div class="col-sm-9">
+                                    {{ form_widget(form.numTel,{'attr':{'class':'form-control' ,'placeholder':'Numero de telephone'}}) }}
+                                </div>
+                            </div>
+                            {{ form_errors(form.numTel,{'attr':{'class': 'text-danger'}}) }}
+
+
+                            <div class="form-group row">
+                                <label class="col-sm-3 col-form-label">Email</label>
+                                <div class="col-sm-9">
+                                    {{ form_widget(form.email,{'attr':{'class':'form-control' ,'placeholder':'Exemple@gmail.com'}}) }}
+                                </div>
+                            </div>
+                            {{ form_errors(form.email,{'attr':{'class': 'text-danger'}}) }}
+
+
+                        </div>
+                        <div class="col-md-6">
+
+                        </div>
+                    </div>
+                    <div class="row">
+
+                        <div class="col-md-6">
+                            <div class="form-group row">
+                                <label class="col-sm-3 col-form-label">Date naissance</label>
+                                <div class="col-sm-9">
+
+                                    {{ form_widget(form.dateNaissance) }}
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group row">
+                                <label class="col-sm-3 col-form-label">Adresse</label>
+                                <div class="col-sm-9">
+                                    {{ form_widget(form.adresse,{'attr':{'class':'form-control' ,'placeholder':'Adresse'}}) }}
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group row">
+                                <label class="col-sm-3 col-form-label">Role</label>
+                                <div class="col-sm-9">
+                                </div>
+                            </div>
+                        </div>
+
+
+                    </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group row">
+                            <label class="col-sm-3 col-form-label">Mot de passe</label>
+                            <div class="col-sm-9">
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+                <button class="form-control btn btn-primary submit px-3">{{ button_label|default('Save') }}</button>
+
+                {{ form_end(form) }}
+            </div>
+        </div>
+    </div>
+
+    <a href="{{ path('app_utilisateur_index') }}">back to list</a>
+
+    {{ include('utilisateur/_delete_form.html.twig') }}
+{% endblock %}

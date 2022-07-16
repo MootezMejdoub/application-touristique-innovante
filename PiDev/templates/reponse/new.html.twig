@@ -1,0 +1,22 @@
+{% extends '/reclamation/index.html.twig' %}
+
+
+{% block content %}
+    <div class="col-lg-12 grid-margin stretch-card">
+        <div class="card">
+
+            <h3>aa</h3><h1>aa</h1>
+            <h1>Create new Reponse</h1>
+
+
+            {{ include('reponse/_form.html.twig') }}
+
+            <a href="{{ path('app_reclamation_index') }}">back to list</a>
+        </div>
+    </div>
+    <h1>Create new Reponse</h1>
+
+    {{ include('reponse/_form.html.twig') }}
+
+    <a href="{{ path('app_reclamation_index') }}">back to list</a>
+{% endblock %}

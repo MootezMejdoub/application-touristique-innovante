@@ -1,0 +1,41 @@
+{% extends 'Admin.html.twig' %}
+
+{% block title %}Facture{% endblock %}
+
+{% block body %}
+    <h1>Facture</h1>
+
+    <table class="table">
+            <tr>
+                <th>Idfacture</th>
+                <th>Client</th>
+                <th>PrixTotal</th>
+                <th>Date</th>
+                <th colspan="2"  >Actions</th>
+            </tr>
+        <tbody>
+               {% for f in facture %}
+            <tr>
+                <td>{{ f.idFacture }}</td>
+                <td>{{ f.idclient }}</td>
+                <td>{{ f.prixTotal }}</td>
+                <td>{{ f.date ? f.date|date('Y-m-d') : '' }}</td>
+                <td> <a href="{{ path('app_facture_edit', {'idfacture': f.idfacture}) }}">edit</a></td>
+                <td> {{ include('facture/_delete_form.html.twig') }}</td>
+            </tr>
+                    {% else %}
+                 <tr>
+                     <td colspan="5">no records found</td>
+                   </tr>
+
+               {% endfor %}
+
+
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_facture_show') }}">refresh</a>
+
+
+
+{% endblock %}

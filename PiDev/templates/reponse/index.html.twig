@@ -1,0 +1,83 @@
+{%  extends'base.html.twig' %}
+{%  block content %}
+
+
+    <div class="section1">
+
+
+
+        <video id="background-video" autoplay loop muted>
+            <source src="{{ asset('images/tunisia.mp4') }}" type="video/mp4">
+        </video>
+
+    </div>
+
+
+
+    <section class="ftco-section contact-section ftco-degree-bg">
+        <div class="container">
+            <div class="row d-flex mb-5 contact-info">
+                <div class="col-md-12 mb-4">
+                    <h2 class="h4">Contact Information</h2>
+                </div>
+                <div class="w-100"></div>
+                <div class="col-md-3">
+                    <p><span>Address:</span> Dar chaaben, nahj aflatoun 7011</p>
+                </div>
+                <div class="col-md-3">
+                    <p><span>Phone:</span> <a href="tel://1234567920">+216 27 066 310 </a></p>
+                </div>
+                <div class="col-md-3">
+                    <p><span>Email:</span> <a href="mailto:info@yoursite.com">mootezmejdoub@esprit.tn</a></p>
+                </div>
+
+            </div>
+            {# affichage reclamation mtai #}
+            <div class="col-lg-12 grid-margin stretch-card">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title">VOTRE REPONSE</h4>
+                        <p class="card-description"> you can check your  <code>Reponse</code>
+                        </p>
+                        <div class="table-responsive">
+                            <table class="table table-dark">
+                                <thead>
+                                <tr>
+
+
+                                    <th> Date </th>
+                                    <th> Message </th>
+
+                                </tr>
+                                </thead>
+                                <tbody>
+                                {% for reponse in reponses %}
+                                    <tr>
+
+                                        <td>{{ reponse.datecreation ? reponse.datecreation|date('Y-m-d') : '' }}</td>
+                                        <td>{{ reponse.message }}</td>
+
+                                    </tr>
+                                {% else %}
+                                    <tr>
+                                        <td colspan="4">no records found</td>
+                                    </tr>
+                                {% endfor %}
+
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {# ///////////wfet affichage #}
+
+
+        </div>
+    </section>
+
+
+{% endblock %}
+
+

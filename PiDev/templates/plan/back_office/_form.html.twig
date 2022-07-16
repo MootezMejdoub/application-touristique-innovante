@@ -1,0 +1,76 @@
+{{ form_start(form                     , {'attr' : {'class':'forms-sample'} }) }}
+    <div class="form-group row">
+        {{ form_label(form.prix, "PRIX", {'label_attr' : {'class':'col-sm-3 col-form-label'}})}}
+        <div class="col-sm-9">
+            {{ form_widget(form.prix, {'attr' : {'class':'form-control'}}) }}
+            {{ form_errors(form.prix) }}
+        </div>
+    </div>
+    <div class="form-group row">
+        {{ form_label(form.titre, "TITRE",{'label_attr' : {'class':'col-sm-3 col-form-label'}}) }}
+        <div class="col-sm-9">
+            {{ form_widget(form.titre,{'attr' : {'class':'form-control'}}) }}
+            {{ form_errors(form.titre) }}
+        </div>
+    </div>
+    <div class="form-group row">
+        {{ form_label(form.description, "description", {'label_attr' : {'class':'col-sm-3 col-form-label'}} ) }}
+        <div class="col-sm-9">
+            {{ form_widget(form.description,{'attr' : {'class':'form-control', 'rows':'4'}} ) }}
+            {{ form_errors(form.description) }}
+        </div>
+    </div>
+    <div class="form-group row">
+        {{ form_label(form.nmbrplacesmax, "Nombre de places", {'label_attr' : {'class':'col-sm-3 col-form-label'}} ) }}
+        <div class="col-sm-9">
+            {{ form_widget(form.nmbrplacesmax  , {'attr' : {'class':'form-control'}} ) }}
+            {{ form_errors(form.nmbrplacesmax) }}
+        </div>
+    </div>
+    <div class="form-group row">
+        {{ form_label(form.nmbrplacesreste, " ",{'label_attr' : {'class':'col-sm-3 col-form-label'}} ) }}
+        <div class="col-sm-9">
+            {{ form_widget(form.nmbrplacesreste, {'attr' : {'class':'form-control'}} ) }}
+            {{ form_errors(form.nmbrplacesreste) }}
+        </div>
+    </div>
+    <div class="form-group row">
+        {{ form_label(form.datedebut, "Date Debut", {'label_attr' : {'class':'col-sm-3 col-form-label'}} ) }}
+        <div class="col-sm-9">
+            {{ form_widget(form.datedebut      , {'attr' : {'class':'form-control'}} ) }}
+            {{ form_errors(form.datedebut) }}
+        </div>
+    </div>
+    <div class="form-group row">
+        {{ form_label(form.datefin, "Date Fin", {'label_attr' : {'class':'col-sm-3 col-form-label'}} ) }}
+        <div class="col-sm-9">
+            {{ form_widget(form.datefin, {'attr' : {'class':'form-control'}} ) }}
+            {{ form_errors(form.datefin) }}
+        </div>
+    </div>
+    <div class="form-group row">
+        {{ form_label(form.pointdepart, "Point Depart", {'label_attr' : {'class':'col-sm-3 col-form-label'}} ) }}
+        <div class="col-sm-9">
+            {{ form_widget(form.pointdepart    , {'attr' : {'class':'form-control'}} ) }}
+            {{ form_errors(form.pointdepart) }}
+        </div>
+    </div>
+    <div class="form-group row">
+        {{ form_label(form.note, " ", {'label_attr' : {'class':'col-sm-3 col-form-label'}} ) }}
+        <div class="col-sm-9">
+            {{ form_widget(form.note, {'attr' : {'class':'form-control'}} ) }}
+            {{ form_errors(form.note) }}
+        </div>
+    </div>
+   {# <div class="form-group row">
+        {{ form_label(form.idguide, "guide", {'label_attr' : {'class':'col-sm-3 col-form-label'}} ) }}
+        <div class="col-sm-9">
+            {{ form_widget(form.idguide, {'attr' : {'class':'form-control'}} ) }}
+            {{ form_errors(form.idguide) }}
+        </div>
+    </div> #}
+    <div class="form-group row">
+
+        <button class="btn">{{ button_label|default('Save') }}</button>
+    </div>
+{{ form_end(form) }}
